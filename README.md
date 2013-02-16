@@ -13,11 +13,9 @@ $ npm install is2
 
 ## Usage
 
-<code>
-var is = require('is2');
-
-console.log('true is equal to 1===1: '+(is.equal(true, 1===1));
-console.log('10 is a positive number: '+(is.positiveNumber(10));
-console.log('11 is an odd number: '+(is.oddNumber(11));
-</code>
+    var is = require('is2');
+    
+    console.log('true is equal to 1===1: '+(is.equal(true, 1===1));
+    console.log('10 is a positive number: '+(is.positiveNumber(10));
+    console.log('11 is an odd number: '+(is.oddNumber(11));
 
