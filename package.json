@@ -1,10 +1,10 @@
 {
       "name" : "is2"
-    , "version" : "0.0.1"
-    , "description" : "A type checking library where each exported function returns either true or false and does not throw."
+    , "version" : "0.0.3"
+    , "description" : "A type checking library where each exported function returns either true or false and does not throw. Also added tests."
     , "tags" : [ "utilities", "JavaScript", "node.js", "validation", "type", "checking" ]
     , "author" : "Enrico Marino <enrico.marino@email.com>"
-    , "maintainer" : "Edmond Meinfelder <edmond@stdarg.com>"
+    , "maintainers" : "Edmond Meinfelder <edmond@stdarg.com>"
     , "homepage" : "http://github.com/stdarg/is2"
     , "repository" : {
           "type" : "git"
@@ -17,7 +17,7 @@
     , "scripts" : {"test" : "./node_modules/.bin/mocha --reporter list"}
     , "engines" : { "node" : ">=v0.6.0" }
     , "dependencies" : { }
-    , "devDependencies" : { 
+    , "devDependencies" : {
               "mocha" : "1.8.1"
             , "jsdom" : "0.5.0" }
 }
