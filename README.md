@@ -2,7 +2,7 @@ is2
 ===
 is2 is a type-checking module for node.js to test values. Is does not throw exceptions. Use is2 to validate types in your node.js code. Every function in is2 returns either true of false.
 
-After finding Enrico Marino's module is, the concise syntax amazed, but there were syntax issues that made using is difficult. This fork of is fixes though issues, but the module is no longer cross-platform. Also, added tests via mocha which can be run using 'npm test'.
+After finding Enrico Marino's module is, the concise syntax amazed, but there were syntax issues that made using is difficult. This fork of is fixes those issues, but the module is no longer cross-platform. Also, added tests via mocha which can be run using 'npm test'.
 
 ## Installation
 To install is2, type:
