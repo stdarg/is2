@@ -21,35 +21,34 @@ To install is2, type:
 
   - [is.type()](#exportstypevaluevaluetypestring)
   - [is.defined()](#exportsdefinedvalueany)
-  - [is.nullOrUndef()](#exportsnullorundefvaluevalue)
+  - [is.nullOrUndef()](#exportsnullorundefvalueany)
   - [is.empty()](#exportsemptyvalueany)
-  - [is.equal()](#exportsequalvaluevaluevalueother)
-  - [is.hosted()](#exportshostedvaluestringhosthost)
-  - [is.instanceOf()](#exportsinstanceofvaluevalue)
-  - [is.null()](#exportsnulltovalue)
-  - [is.undefined()](#exportsundefinedvaluevalue)
-  - [is.arguments()](#exportsargumentsvaluevalue)
-  - [is.array()](#exportsarrayvaluevalue)
-  - [is.nonEmptyArray()](#exportsnonemptyarrayvaluevalue)
-  - [is.array.empty()](#exportsarrayemptyvaluearrayarguments)
-  - [is.arrayLike()](#exportsarraylikevaluevalue)
-  - [is.boolean()](#exportsbooleanvaluevalue)
-  - [is.false()](#exportsfalsevaluevalue)
-  - [is.true()](#exportstruevalueboolean)
-  - [is.date()](#exportsdatevaluevalue)
+  - [is.equal()](#exportsequalvalueanyotherany)
+  - [is.hosted()](#exportshostedvalueanyhostany)
+  - [is.instanceOf()](#exportsinstanceofvalueany)
+  - [is.null()](#exportsnullvalueany)
+  - [is.undefined()](#exportsundefinedvalueany)
+  - [is.arguments()](#exportsargumentsvalueany)
+  - [is.array()](#exportsarrayvalueany)
+  - [is.nonEmptyArray()](#exportsnonemptyarrayvalueany)
+  - [is.array.empty()](#exportsarrayemptyvalueany)
+  - [is.arrayLike()](#exportsarraylikevalueany)
+  - [is.boolean()](#exportsbooleanvalueany)
+  - [is.false()](#exportsfalsevalueany)
+  - [is.true()](#exportstruevalueany)
+  - [is.date()](#exportsdatevalueany)
   - [is.error()](#exportserrorvaluevalue)
-  - [is.function()](#exportsfunctionvaluevalue)
-  - [is.number()](#exportsnumbertovalue)
-  - [is.positiveNumber()](#exportspositivenumbertovalue)
-  - [is.negativeNumber()](#exportsnegativenumbertovalue)
-  - [is.decimal()](#exportsdecimalvaluevalue)
+  - [is.function()](#exportsfunctionvalueany)
+  - [is.number()](#exportsnumbervalueany)
+  - [is.positiveNumber()](#exportspositivenumbervalueany)
+  - [is.negativeNumber()](#exportsnegativenumbervalueany)
+  - [is.decimal()](#exportsdecimalvalueany)
   - [is.divisibleBy()](#exportsdivisiblebyvaluenumbernnumber)
-  - [is.int()](#exportsinttovalue)
-  - [is.positiveInt()](#exportspositiveinttovalue)
-  - [is.negativeInt()](#exportsnegativeinttovalue)
+  - [is.int()](#exportsintvalueany)
+  - [is.positiveInt()](#exportspositiveintvalueany)
+  - [is.negativeInt()](#exportsnegativeintvalueany)
   - [is.maximum()](#exportsmaximumvaluenumberothersarray)
   - [is.minimum()](#exportsminimumvaluenumberothersarray)
-  - [is.nan()](#exportsnantovalue)
   - [is.even()](#exportsevenvaluenumber)
   - [is.odd()](#exportsoddvaluenumber)
   - [is.ge()](#exportsgevaluenumberothernumber)
@@ -58,11 +57,11 @@ To install is2, type:
   - [is.lt()](#exportsltvaluenumberothernumber)
   - [is.within()](#exportswithinvaluenumberstartnumberfinishnumber)
   - [is.object()](#exportsobjectvalueany)
-  - [is.nonEmptyObject()](#exportsnonemptyobjecttovalue)
+  - [is.nonEmptyObject()](#exportsnonemptyobjectvalueany)
   - [is.objectInstanceof()](#exportsobjectinstanceofobjinstobjectobjtypeobject)
-  - [is.regexp()](#exportsregexptovalue)
-  - [is.string()](#exportsstringtovalue)
-  - [is.nonEmptyString()](#exportsnonemptystringtovalue)
+  - [is.regexp()](#exportsregexpvalueany)
+  - [is.string()](#exportsstringvalueany)
+  - [is.nonEmptyString()](#exportsnonemptystringvalueany)
 
 ### is.type(value:value, type:String)
 
@@ -74,7 +73,7 @@ To install is2, type:
   Test if 'value' is defined.
   Alias: def
 
-### is.nullOrUndef(value:value)
+### is.nullOrUndef(value:Any)
 
   Test is 'value' is either null or undefined.
   Alias: nullOrUndef
@@ -83,69 +82,69 @@ To install is2, type:
 
   Test if 'value' is empty. To be empty means to be an array, object or string with nothing contained.
 
-### is.equal(value.:value, value:other)
+### is.equal(value:Any, other:Any)
 
   Test if 'value' is equal to 'other'. Works for objects and arrays and will do deep comparisions,
   using recursion.
   Alias: eq
 
-### is.hosted(value:String, host:host)
+### is.hosted(value:Any, host:Any)
 
   Test if 'key' in host is an object. To be hosted means host[value] is an object.
 
-### is.instanceOf(value:value)
+### is.instanceOf(value:Any)
 
   Test if 'value' is an instance of 'constructor'.
   Aliases: instOf, instanceof
 
-### is.null(to:value)
+### is.null(value:Any)
 
   Test if 'value' is null.
 
-### is.undefined(value:value)
+### is.undefined(value:Any)
 
   Test if 'value' is undefined.
   Aliases: undef, udef
 
-### is.arguments(value:value)
+### is.arguments(value:Any)
 
   Test if 'value' is an arguments object.
   Alias: args
 
-### is.array(value:value)
+### is.array(value:Any)
 
   Test if 'value' is an array.
   Alias: ary, arry
 
-### is.nonEmptyArray(value:value)
+### is.nonEmptyArray(value:Any)
 
   Test if 'value' is an array containing at least 1 entry.
   Aliases: nonEmptyArry, nonEmptyAry
 
-### is.array.empty(value:Array|Arguments)
+### is.array.empty(value:Any)
 
   Test if 'value' is an empty array(like) object.
   Aliases: arguents.empty, args.empty, ary.empty, arry.empty
 
-### is.arrayLike(value:value)
+### is.arrayLike(value:Any)
 
   Test if 'value' is an arraylike object (i.e. it has a length property with a valid value)
   Aliases: arraylike, arryLike, aryLike
 
-### is.boolean(value:value)
+### is.boolean(value:Any)
 
   Test if 'value' is a boolean.
   Alias: bool
 
-### is.false(value:value)
+### is.false(value:Any)
 
   Test if 'value' is false.
 
-### is.true(value:Boolean)
+### is.true(value:Any)
 
   Test if 'value' is true.
 
-### is.date(value:value)
+### is.date(value:Any)
 
   Test if 'value' is a date.
 
@@ -154,27 +153,27 @@ To install is2, type:
   Test if 'value' is an error object.
   Alias: err
 
-### is.function(value:value)
+### is.function(value:Any)
 
   Test if 'value' is a function.
   Alias: func
 
-### is.number(to:value)
+### is.number(value:Any)
 
   Test if 'value' is a number.
   Alias: num
 
-### is.positiveNumber(to:value)
+### is.positiveNumber(value:Any)
 
   Test if 'value' is a positive number.
   Alias: positiveNum, posNum
 
-### is.negativeNumber(to:value)
+### is.negativeNumber(value:Any)
 
   Test if 'value' is a negative number.
   Aliases: negNum, negativeNum
 
-### is.decimal(value:value)
+### is.decimal(value:Any)
 
   Test if 'value' is a decimal number.
   Aliases: decimalNumber, decNum
@@ -184,17 +183,17 @@ To install is2, type:
   Test if 'value' is divisible by 'n'.
   Alias: divisBy
 
-### is.int(to:value)
+### is.int(value:Any)
 
   Test if 'value' is an integer.
   Alias: integer
 
-### is.positiveInt(to:value)
+### is.positiveInt(value:Any)
 
   Test if 'value' is a positive integer.
   Alias: posInt
 
-### is.negativeInt(to:value)
+### is.negativeInt(value:Any)
 
   Test if 'value' is a negative integer.
   Aliases: negInt, negativeInteger
@@ -208,11 +207,6 @@ To install is2, type:
 
   Test if 'value' is less than 'others' values.
   Alias: min
-
-### is.nan(to:value)
-
-  Test if 'value' is not a number.
-  Alias: notANumber, notANum
 
 ### is.even(value:Number)
 
@@ -252,7 +246,7 @@ To install is2, type:
   Test if 'value' is an object. Note: Arrays, RegExps, Date, Error, etc all return false.
   Alias: obj
 
-### is.nonEmptyObject(to:value)
+### is.nonEmptyObject(value:Any)
 
   Test if 'value' is an object with properties. Note: Arrays are objects.
   Alias: nonEmptyObj
@@ -262,17 +256,17 @@ To install is2, type:
   Test if 'value' is an instance type objType.
   Aliases: objInstOf, objectinstanceof
 
-### is.regexp(to:value)
+### is.regexp(value:Any)
 
   Test if 'value' is a regular expression.
   Alias: regexp
 
-### is.string(to:value)
+### is.string(value:Any)
 
   Test if 'value' is a string.
   Alias: str
 
-### is.nonEmptyString(to:value)
+### is.nonEmptyString(value:Any)
 
   Test if 'value' is a non-empty string.
   Alias: nonEmptyStr
