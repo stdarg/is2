@@ -19,260 +19,260 @@ To install is2, type:
 
 ## API
 
-  - [exports.type()](#exportstypevaluevaluetypestring)
-  - [exports.defined()](#exportsdefinedvalueany)
-  - [exports.nullOrUndef()](#exportsnullorundefvaluevalue)
-  - [exports.empty()](#exportsemptyvalueany)
-  - [exports.equal()](#exportsequalvaluevaluevalueother)
-  - [exports.hosted()](#exportshostedvaluestringhosthost)
-  - [exports.instanceOf()](#exportsinstanceofvaluevalue)
-  - [exports.null()](#exportsnulltovalue)
-  - [exports.undefined()](#exportsundefinedvaluevalue)
-  - [exports.arguments()](#exportsargumentsvaluevalue)
-  - [exports.array()](#exportsarrayvaluevalue)
-  - [exports.nonEmptyArray()](#exportsnonemptyarrayvaluevalue)
-  - [exports.array.empty()](#exportsarrayemptyvaluearrayarguments)
-  - [exports.arrayLike()](#exportsarraylikevaluevalue)
-  - [exports.boolean()](#exportsbooleanvaluevalue)
-  - [exports.false()](#exportsfalsevaluevalue)
-  - [exports.true()](#exportstruevalueboolean)
-  - [exports.date()](#exportsdatevaluevalue)
-  - [exports.error()](#exportserrorvaluevalue)
-  - [exports.function()](#exportsfunctionvaluevalue)
-  - [exports.number()](#exportsnumbertovalue)
-  - [exports.positiveNumber()](#exportspositivenumbertovalue)
-  - [exports.negativeNumber()](#exportsnegativenumbertovalue)
-  - [exports.decimal()](#exportsdecimalvaluevalue)
-  - [exports.divisibleBy()](#exportsdivisiblebyvaluenumbernnumber)
-  - [exports.int()](#exportsinttovalue)
-  - [exports.positiveInt()](#exportspositiveinttovalue)
-  - [exports.negativeInt()](#exportsnegativeinttovalue)
-  - [exports.maximum()](#exportsmaximumvaluenumberothersarray)
-  - [exports.minimum()](#exportsminimumvaluenumberothersarray)
-  - [exports.nan()](#exportsnantovalue)
-  - [exports.even()](#exportsevenvaluenumber)
-  - [exports.odd()](#exportsoddvaluenumber)
-  - [exports.ge()](#exportsgevaluenumberothernumber)
-  - [exports.gt()](#exportsgtvaluenumberothernumber)
-  - [exports.le()](#exportslevaluenumberothernumber)
-  - [exports.lt()](#exportsltvaluenumberothernumber)
-  - [exports.within()](#exportswithinvaluenumberstartnumberfinishnumber)
-  - [exports.object()](#exportsobjectvalueany)
-  - [exports.nonEmptyObject()](#exportsnonemptyobjecttovalue)
-  - [exports.objectInstanceof()](#exportsobjectinstanceofobjinstobjectobjtypeobject)
-  - [exports.regexp()](#exportsregexptovalue)
-  - [exports.string()](#exportsstringtovalue)
-  - [exports.nonEmptyString()](#exportsnonemptystringtovalue)
+  - [is.type()](#exportstypevaluevaluetypestring)
+  - [is.defined()](#exportsdefinedvalueany)
+  - [is.nullOrUndef()](#exportsnullorundefvaluevalue)
+  - [is.empty()](#exportsemptyvalueany)
+  - [is.equal()](#exportsequalvaluevaluevalueother)
+  - [is.hosted()](#exportshostedvaluestringhosthost)
+  - [is.instanceOf()](#exportsinstanceofvaluevalue)
+  - [is.null()](#exportsnulltovalue)
+  - [is.undefined()](#exportsundefinedvaluevalue)
+  - [is.arguments()](#exportsargumentsvaluevalue)
+  - [is.array()](#exportsarrayvaluevalue)
+  - [is.nonEmptyArray()](#exportsnonemptyarrayvaluevalue)
+  - [is.array.empty()](#exportsarrayemptyvaluearrayarguments)
+  - [is.arrayLike()](#exportsarraylikevaluevalue)
+  - [is.boolean()](#exportsbooleanvaluevalue)
+  - [is.false()](#exportsfalsevaluevalue)
+  - [is.true()](#exportstruevalueboolean)
+  - [is.date()](#exportsdatevaluevalue)
+  - [is.error()](#exportserrorvaluevalue)
+  - [is.function()](#exportsfunctionvaluevalue)
+  - [is.number()](#exportsnumbertovalue)
+  - [is.positiveNumber()](#exportspositivenumbertovalue)
+  - [is.negativeNumber()](#exportsnegativenumbertovalue)
+  - [is.decimal()](#exportsdecimalvaluevalue)
+  - [is.divisibleBy()](#exportsdivisiblebyvaluenumbernnumber)
+  - [is.int()](#exportsinttovalue)
+  - [is.positiveInt()](#exportspositiveinttovalue)
+  - [is.negativeInt()](#exportsnegativeinttovalue)
+  - [is.maximum()](#exportsmaximumvaluenumberothersarray)
+  - [is.minimum()](#exportsminimumvaluenumberothersarray)
+  - [is.nan()](#exportsnantovalue)
+  - [is.even()](#exportsevenvaluenumber)
+  - [is.odd()](#exportsoddvaluenumber)
+  - [is.ge()](#exportsgevaluenumberothernumber)
+  - [is.gt()](#exportsgtvaluenumberothernumber)
+  - [is.le()](#exportslevaluenumberothernumber)
+  - [is.lt()](#exportsltvaluenumberothernumber)
+  - [is.within()](#exportswithinvaluenumberstartnumberfinishnumber)
+  - [is.object()](#exportsobjectvalueany)
+  - [is.nonEmptyObject()](#exportsnonemptyobjecttovalue)
+  - [is.objectInstanceof()](#exportsobjectinstanceofobjinstobjectobjtypeobject)
+  - [is.regexp()](#exportsregexptovalue)
+  - [is.string()](#exportsstringtovalue)
+  - [is.nonEmptyString()](#exportsnonemptystringtovalue)
 
-### exports.type(value:value, type:String)
+### is.type(value:value, type:String)
 
   Test if 'value' is a type of 'type'.
   Alias: a
 
-### exports.defined(value:Any)
+### is.defined(value:Any)
 
   Test if 'value' is defined.
   Alias: def
 
-### exports.nullOrUndef(value:value)
+### is.nullOrUndef(value:value)
 
   Test is 'value' is either null or undefined.
   Alias: nullOrUndef
 
-### exports.empty(value:Any)
+### is.empty(value:Any)
 
   Test if 'value' is empty. To be empty means to be an array, object or string with nothing contained.
 
-### exports.equal(value.:value, value:other)
+### is.equal(value.:value, value:other)
 
   Test if 'value' is equal to 'other'. Works for objects and arrays and will do deep comparisions,
   using recursion.
   Alias: eq
 
-### exports.hosted(value:String, host:host)
+### is.hosted(value:String, host:host)
 
   Test if 'key' in host is an object. To be hosted means host[value] is an object.
 
-### exports.instanceOf(value:value)
+### is.instanceOf(value:value)
 
   Test if 'value' is an instance of 'constructor'.
   Aliases: instOf, instanceof
 
-### exports.null(to:value)
+### is.null(to:value)
 
   Test if 'value' is null.
 
-### exports.undefined(value:value)
+### is.undefined(value:value)
 
   Test if 'value' is undefined.
   Aliases: undef, udef
 
-### exports.arguments(value:value)
+### is.arguments(value:value)
 
   Test if 'value' is an arguments object.
   Alias: args
 
-### exports.array(value:value)
+### is.array(value:value)
 
   Test if 'value' is an array.
   Alias: ary, arry
 
-### exports.nonEmptyArray(value:value)
+### is.nonEmptyArray(value:value)
 
   Test if 'value' is an array containing at least 1 entry.
   Aliases: nonEmptyArry, nonEmptyAry
 
-### exports.array.empty(value:Array|Arguments)
+### is.array.empty(value:Array|Arguments)
 
   Test if 'value' is an empty array(like) object.
   Aliases: arguents.empty, args.empty, ary.empty, arry.empty
 
-### exports.arrayLike(value:value)
+### is.arrayLike(value:value)
 
   Test if 'value' is an arraylike object (i.e. it has a length property with a valid value)
   Aliases: arraylike, arryLike, aryLike
 
-### exports.boolean(value:value)
+### is.boolean(value:value)
 
   Test if 'value' is a boolean.
   Alias: bool
 
-### exports.false(value:value)
+### is.false(value:value)
 
   Test if 'value' is false.
 
-### exports.true(value:Boolean)
+### is.true(value:Boolean)
 
   Test if 'value' is true.
 
-### exports.date(value:value)
+### is.date(value:value)
 
   Test if 'value' is a date.
 
-### exports.error(value:value)
+### is.error(value:value)
 
   Test if 'value' is an error object.
   Alias: err
 
-### exports.function(value:value)
+### is.function(value:value)
 
   Test if 'value' is a function.
   Alias: func
 
-### exports.number(to:value)
+### is.number(to:value)
 
   Test if 'value' is a number.
   Alias: num
 
-### exports.positiveNumber(to:value)
+### is.positiveNumber(to:value)
 
   Test if 'value' is a positive number.
   Alias: positiveNum, posNum
 
-### exports.negativeNumber(to:value)
+### is.negativeNumber(to:value)
 
   Test if 'value' is a negative number.
   Aliases: negNum, negativeNum
 
-### exports.decimal(value:value)
+### is.decimal(value:value)
 
   Test if 'value' is a decimal number.
   Aliases: decimalNumber, decNum
 
-### exports.divisibleBy(value:Number, n:Number)
+### is.divisibleBy(value:Number, n:Number)
 
   Test if 'value' is divisible by 'n'.
   Alias: divisBy
 
-### exports.int(to:value)
+### is.int(to:value)
 
   Test if 'value' is an integer.
   Alias: integer
 
-### exports.positiveInt(to:value)
+### is.positiveInt(to:value)
 
   Test if 'value' is a positive integer.
   Alias: posInt
 
-### exports.negativeInt(to:value)
+### is.negativeInt(to:value)
 
   Test if 'value' is a negative integer.
   Aliases: negInt, negativeInteger
 
-### exports.maximum(value:Number, others:Array)
+### is.maximum(value:Number, others:Array)
 
   Test if 'value' is greater than 'others' values.
   Alias: max
 
-### exports.minimum(value:Number, others:Array)
+### is.minimum(value:Number, others:Array)
 
   Test if 'value' is less than 'others' values.
   Alias: min
 
-### exports.nan(to:value)
+### is.nan(to:value)
 
   Test if 'value' is not a number.
   Alias: notANumber, notANum
 
-### exports.even(value:Number)
+### is.even(value:Number)
 
   Test if 'value' is an even number.
 
-### exports.odd(value:Number)
+### is.odd(value:Number)
 
   Test if 'value' is an odd number.
 
-### exports.ge(value:Number, other:Number)
+### is.ge(value:Number, other:Number)
 
   Test if 'value' is greater than or equal to 'other'.
   Aliases: greaterOrEq, greaterOrEqual
 
-### exports.gt(value:Number, other:Number)
+### is.gt(value:Number, other:Number)
 
   Test if 'value' is greater than 'other'.
   Aliases: greaterThan
 
-### exports.le(value:Number, other:Number)
+### is.le(value:Number, other:Number)
 
   Test if 'value' is less than or equal to 'other'.
   Alias: lessThanOrEq, lessThanOrEqual
 
-### exports.lt(value:Number, other:Number)
+### is.lt(value:Number, other:Number)
 
   Test if 'value' is less than 'other'.
   Alias: lessThan
 
-### exports.within(value:Number, start:Number, finish:Number)
+### is.within(value:Number, start:Number, finish:Number)
 
   Test if 'value' is within 'start' and 'finish'.
   Alias: withIn
 
-### exports.object(value:Any)
+### is.object(value:Any)
 
   Test if 'value' is an object. Note: Arrays, RegExps, Date, Error, etc all return false.
   Alias: obj
 
-### exports.nonEmptyObject(to:value)
+### is.nonEmptyObject(to:value)
 
   Test if 'value' is an object with properties. Note: Arrays are objects.
   Alias: nonEmptyObj
 
-### exports.objectInstanceof(objInst:object, objType:object)
+### is.objectInstanceof(objInst:object, objType:object)
 
   Test if 'value' is an instance type objType.
   Aliases: objInstOf, objectinstanceof
 
-### exports.regexp(to:value)
+### is.regexp(to:value)
 
   Test if 'value' is a regular expression.
   Alias: regexp
 
-### exports.string(to:value)
+### is.string(to:value)
 
   Test if 'value' is a string.
   Alias: str
 
-### exports.nonEmptyString(to:value)
+### is.nonEmptyString(to:value)
 
   Test if 'value' is a non-empty string.
   Alias: nonEmptyStr
