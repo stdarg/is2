@@ -87,7 +87,7 @@ describe('is.instanceOf', function() {
             this.regular = false;              // sides needn't be all the same
             this.area = 1;
         }
-        
+
         function Rectangle(top_len, side_len) {
             this.edges = 4;
             this.top = top_len;
@@ -475,7 +475,7 @@ describe('is.nan', function() {
         assert.equal(false, is.nan('37.37'));   // false: "37.37" is converted to 37.37 which is not NaN
         assert.equal(false, is.nan(' '));       // false converted to 0
         assert.equal(false, is.nan(''));        // false converted to 0
-        assert.equal(true, is.nan('blabla'));  
+        assert.equal(true, is.nan('blabla'));
         assert.equal(true, is.nan(NaN));
     })
 })
@@ -614,19 +614,19 @@ describe('is.objectInstanceOf', function() {
         function Circle() {
             this.raidius = 3;
             this.area = 4;
-        }   
+        }
         function Polygon() {
             this.edges = 8;                    // octogons are the default
             this.regular = false;              // sides needn't be all the same
             this.area = 1;
-        }   
-    
+        }
+
         function Rectangle(top_len, side_len) {
             this.edges = 4;
             this.top = top_len;
             this.side = side_len;
             this.area = top_len*side_len;
-        }   
+        }
         Rectangle.prototype = new Polygon;
         var box = new Rectangle(8,3);
 
