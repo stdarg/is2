@@ -19,12 +19,12 @@ To install is2, type:
 
 ## API
 
-### is.type(value, type)
+### type(value, type)
 
 Test if 'value' is a type of 'type'.
 Alias: a
 
-#### Params:
+#### Params: 
 
 * **value** *value* to test.
 
@@ -34,12 +34,12 @@ Alias: a
 
 * **Boolean** true if 'value' is an arguments object, false otherwise.
 
-### is.defined(value)
+### defined(value)
 
 Test if 'value' is defined.
 Alias: def
 
-#### Params:
+#### Params: 
 
 * **Any** *value* The value to test.
 
@@ -47,12 +47,12 @@ Alias: def
 
 * **Boolean** true if 'value' is defined, false otherwise.
 
-### is.nullOrUndef(value)
+### nullOrUndef(value)
 
 Test is 'value' is either null or undefined.
 Alias: nullOrUndef
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -60,11 +60,11 @@ Alias: nullOrUndef
 
 * **Boolean** True if value is null or undefined, false otherwise.
 
-### is.empty(value)
+### empty(value)
 
 Test if 'value' is empty. To be empty means to be an array, object or string with nothing contained.
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -72,12 +72,12 @@ Test if 'value' is empty. To be empty means to be an array, object or string wit
 
 * **Boolean** true if 'value' is empty, false otherwise.
 
-### is.objEquals(value, other)
+### objEquals(value, other)
 
 Do a deep comparision of two objects for equality. Will recurse without any limits. Meant to be
 called by equal only.
 
-#### Params:
+#### Params: 
 
 * **Object** *value* The first object to compare.
 
@@ -87,13 +87,13 @@ called by equal only.
 
 * **Boolean** true, if the objects are equivalent, false otherwise.
 
-### is.equal(value, other)
+### equal(value, other)
 
 Test if 'value' is equal to 'other'. Works for objects and arrays and will do deep comparisions,
 using recursion.
 Alias: eq
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value.
 
@@ -103,15 +103,15 @@ Alias: eq
 
 * **Boolean** true if 'value' is equal to 'other', false otherwise
 
-### is.NON_HOST_TYPES
+### NON_HOST_TYPES
 
 JS Type definitions which cannot host values.
 
-### is.hosted(value, host)
+### hosted(value, host)
 
 Test if 'key' in host is an object. To be hosted means host[value] is an object.
 
-#### Params:
+#### Params: 
 
 * **Any** *value* The value to test.
 
@@ -121,12 +121,12 @@ Test if 'key' in host is an object. To be hosted means host[value] is an object.
 
 * **Boolean** true if 'value' is hosted by 'host', false otherwise.
 
-### is.instanceOf(value)
+### instanceOf(value)
 
 Test if 'value' is an instance of 'constructor'.
 Aliases: instOf, instanceof
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -134,11 +134,24 @@ Aliases: instOf, instanceof
 
 * **Boolean** true if 'value' is an instance of 'constructor'.
 
-### is.null(value)
+### buffer(value)
+
+Test if 'value' is an instance of Buffer.
+Aliases: instOf, instanceof
+
+#### Params: 
+
+* **Any** *value* value to test.
+
+#### Return:
+
+* **Boolean** true if 'value' is an instance of 'constructor'.
+
+### null(value)
 
 Test if 'value' is null.
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -146,12 +159,12 @@ Test if 'value' is null.
 
 * **Boolean** true if 'value' is null, false otherwise.
 
-### is.undefined(value)
+### undefined(value)
 
 Test if 'value' is undefined.
 Aliases: undef, udef
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -159,12 +172,12 @@ Aliases: undef, udef
 
 * **Boolean** true if 'value' is undefined, false otherwise.
 
-### is.arguments(value)
+### arguments(value)
 
 Test if 'value' is an arguments object.
 Alias: args
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test
 
@@ -172,12 +185,12 @@ Alias: args
 
 * **Boolean** true if 'value' is an arguments object, false otherwise
 
-### is.emptyArguments(value)
+### emptyArguments(value)
 
 Test if 'value' is an arguments object that is empty.
 Alias: args
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test
 
@@ -185,12 +198,12 @@ Alias: args
 
 * **Boolean** true if 'value' is an arguments object with no args, false otherwise
 
-### is.array(value)
+### array(value)
 
 Test if 'value' is an array.
 Alias: ary, arry
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -198,12 +211,12 @@ Alias: ary, arry
 
 * **Boolean** true if 'value' is an array, false otherwise.
 
-### is.nonEmptyArray(value)
+### nonEmptyArray(value)
 
 Test if 'value' is an array containing at least 1 entry.
 Aliases: nonEmptyArry, nonEmptyAry
 
-#### Params:
+#### Params: 
 
 * **Any** *value* The value to test.
 
@@ -211,12 +224,12 @@ Aliases: nonEmptyArry, nonEmptyAry
 
 * **Boolean** true if 'value' is an array with at least 1 value, false otherwise.
 
-### is.nonEmptyArray(value)
+### nonEmptyArray(value)
 
 Test if 'value' is an array containing no entries.
 Aliases: emptyArry, emptyAry
 
-#### Params:
+#### Params: 
 
 * **Any** *value* The value to test.
 
@@ -224,12 +237,12 @@ Aliases: emptyArry, emptyAry
 
 * **Boolean** true if 'value' is an array with no elemnets.
 
-### is.empty(value)
+### empty(value)
 
 Test if 'value' is an empty array(like) object.
 Aliases: arguents.empty, args.empty, ary.empty, arry.empty
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -237,12 +250,12 @@ Aliases: arguents.empty, args.empty, ary.empty, arry.empty
 
 * **Boolean** true if 'value' is an empty array(like), false otherwise.
 
-### is.arrayLike(value)
+### arrayLike(value)
 
 Test if 'value' is an arraylike object (i.e. it has a length property with a valid value)
 Aliases: arraylike, arryLike, aryLike
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -250,12 +263,12 @@ Aliases: arraylike, arryLike, aryLike
 
 * **Boolean** true if 'value' is an arguments object, false otherwise.
 
-### is.boolean(value)
+### boolean(value)
 
 Test if 'value' is a boolean.
 Alias: bool
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -263,11 +276,11 @@ Alias: bool
 
 * **Boolean** true if 'value' is a boolean, false otherwise.
 
-### is.false(value)
+### false(value)
 
 Test if 'value' is false.
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -275,11 +288,11 @@ Test if 'value' is false.
 
 * **Boolean** true if 'value' is false, false otherwise
 
-### is.true(value)
+### true(value)
 
 Test if 'value' is true.
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -287,11 +300,11 @@ Test if 'value' is true.
 
 * **Boolean** true if 'value' is true, false otherwise.
 
-### is.date(value)
+### date(value)
 
 Test if 'value' is a date.
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -299,12 +312,12 @@ Test if 'value' is a date.
 
 * **Boolean** true if 'value' is a date, false otherwise.
 
-### is.error(value)
+### error(value)
 
 Test if 'value' is an error object.
 Alias: err
 
-#### Params:
+#### Params: 
 
 * **value** *value* to test.
 
@@ -312,12 +325,12 @@ Alias: err
 
 * **Boolean** true if 'value' is an error object, false otherwise.
 
-### is.function(value)
+### function(value)
 
 Test if 'value' is a function.
 Alias: func
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -325,12 +338,12 @@ Alias: func
 
 * **Boolean** true if 'value' is a function, false otherwise.
 
-### is.number(value)
+### number(value)
 
 Test if 'value' is a number.
 Alias: num
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -338,12 +351,12 @@ Alias: num
 
 * **Boolean** true if 'value' is a number, false otherwise.
 
-### is.positiveNumber(value)
+### positiveNumber(value)
 
 Test if 'value' is a positive number.
 Alias: positiveNum, posNum
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -351,12 +364,12 @@ Alias: positiveNum, posNum
 
 * **Boolean** true if 'value' is a number, false otherwise.
 
-### is.negativeNumber(value)
+### negativeNumber(value)
 
 Test if 'value' is a negative number.
 Aliases: negNum, negativeNum
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -364,12 +377,12 @@ Aliases: negNum, negativeNum
 
 * **Boolean** true if 'value' is a number, false otherwise.
 
-### is.decimal(value)
+### decimal(value)
 
 Test if 'value' is a decimal number.
 Aliases: decimalNumber, decNum
 
-#### Params:
+#### Params: 
 
 * **Any** *value* value to test.
 
@@ -377,12 +390,12 @@ Aliases: decimalNumber, decNum
 
 * **Boolean** true if 'value' is a decimal number, false otherwise.
 
-### is.divisibleBy(value, n)
+### divisibleBy(value, n)
 
 Test if 'value' is divisible by 'n'.
 Alias: divisBy
 
-#### Params:
+#### Params: 
 
 * **Number** *value* value to test.
 
@@ -392,12 +405,12 @@ Alias: divisBy
 
 * **Boolean** true if 'value' is divisible by 'n', false otherwise.
 
-### is.int(value)
+### int(value)
 
 Test if 'value' is an integer.
 Alias: integer
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -405,12 +418,12 @@ Alias: integer
 
 * **Boolean** true if 'value' is an integer, false otherwise.
 
-### is.positiveInt(value)
+### positiveInt(value)
 
 Test if 'value' is a positive integer.
 Alias: posInt
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -418,12 +431,12 @@ Alias: posInt
 
 * **Boolean** true if 'value' is a positive integer, false otherwise.
 
-### is.negativeInt(value)
+### negativeInt(value)
 
 Test if 'value' is a negative integer.
 Aliases: negInt, negativeInteger
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -431,12 +444,12 @@ Aliases: negInt, negativeInteger
 
 * **Boolean** true if 'value' is a negative integer, false otherwise.
 
-### is.maximum(value, others)
+### maximum(value, others)
 
 Test if 'value' is greater than 'others' values.
 Alias: max
 
-#### Params:
+#### Params: 
 
 * **Number** *value* value to test.
 
@@ -446,12 +459,12 @@ Alias: max
 
 * **Boolean** true if 'value' is greater than 'others' values.
 
-### is.minimum(value, others)
+### minimum(value, others)
 
 Test if 'value' is less than 'others' values.
 Alias: min
 
-#### Params:
+#### Params: 
 
 * **Number** *value* value to test.
 
@@ -461,11 +474,24 @@ Alias: min
 
 * **Boolean** true if 'value' is less than 'others' values.
 
-### is.even(value)
+### nan(value)
+
+is.nan
+Test if `value` is not a number.
+
+#### Params: 
+
+* **Mixed** *value* value to test
+
+#### Return:
+
+* **Boolean** true if `value` is not a number, false otherwise
+
+### even(value)
 
 Test if 'value' is an even number.
 
-#### Params:
+#### Params: 
 
 * **Number** *value* to test.
 
@@ -473,11 +499,11 @@ Test if 'value' is an even number.
 
 * **Boolean** true if 'value' is an even number, false otherwise.
 
-### is.odd(value)
+### odd(value)
 
 Test if 'value' is an odd number.
 
-#### Params:
+#### Params: 
 
 * **Number** *value* to test.
 
@@ -485,12 +511,12 @@ Test if 'value' is an odd number.
 
 * **Boolean** true if 'value' is an odd number, false otherwise.
 
-### is.ge(value, other)
+### ge(value, other)
 
 Test if 'value' is greater than or equal to 'other'.
 Aliases: greaterOrEq, greaterOrEqual
 
-#### Params:
+#### Params: 
 
 * **Number** *value* value to test.
 
@@ -500,12 +526,12 @@ Aliases: greaterOrEq, greaterOrEqual
 
 * **Boolean** true, if value is greater than or equal to other, false otherwise.
 
-### is.gt(value, other)
+### gt(value, other)
 
 Test if 'value' is greater than 'other'.
 Aliases: greaterThan
 
-#### Params:
+#### Params: 
 
 * **Number** *value* value to test.
 
@@ -515,12 +541,12 @@ Aliases: greaterThan
 
 * **Boolean** true, if value is greater than other, false otherwise.
 
-### is.le(value, other)
+### le(value, other)
 
 Test if 'value' is less than or equal to 'other'.
 Alias: lessThanOrEq, lessThanOrEqual
 
-#### Params:
+#### Params: 
 
 * **Number** *value* value to test
 
@@ -530,12 +556,12 @@ Alias: lessThanOrEq, lessThanOrEqual
 
 * **Boolean** true, if 'value' is less than or equal to 'other', false otherwise.
 
-### is.lt(value, other)
+### lt(value, other)
 
 Test if 'value' is less than 'other'.
 Alias: lessThan
 
-#### Params:
+#### Params: 
 
 * **Number** *value* value to test
 
@@ -545,12 +571,12 @@ Alias: lessThan
 
 * **Boolean** true, if 'value' is less than 'other', false otherwise.
 
-### is.within(value, start, finish)
+### within(value, start, finish)
 
 Test if 'value' is within 'start' and 'finish'.
 Alias: withIn
 
-#### Params:
+#### Params: 
 
 * **Number** *value* value to test.
 
@@ -562,12 +588,12 @@ Alias: withIn
 
 * **Boolean** true if 'value' is is within 'start' and 'finish', false otherwise.
 
-### is.object(value)
+### object(value)
 
 Test if 'value' is an object. Note: Arrays, RegExps, Date, Error, etc all return false.
 Alias: obj
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -575,12 +601,12 @@ Alias: obj
 
 * **Boolean** true if 'value' is an object, false otherwise.
 
-### is.nonEmptyObject(value)
+### nonEmptyObject(value)
 
 Test if 'value' is an object with properties. Note: Arrays are objects.
 Alias: nonEmptyObj
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -588,12 +614,12 @@ Alias: nonEmptyObj
 
 * **Boolean** true if 'value' is an object, false otherwise.
 
-### is.objectInstanceof(objInst, objType)
+### objectInstanceof(objInst, objType)
 
 Test if 'value' is an instance type objType.
 Aliases: objInstOf, objectinstanceof, instOf, instanceOf
 
-#### Params:
+#### Params: 
 
 * **object** *objInst* an object to testfor type.
 
@@ -603,12 +629,12 @@ Aliases: objInstOf, objectinstanceof, instOf, instanceOf
 
 * **Boolean** true if 'value' is an object, false otherwise.
 
-### is.regexp(value)
+### regexp(value)
 
 Test if 'value' is a regular expression.
 Alias: regexp
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -616,12 +642,12 @@ Alias: regexp
 
 * **Boolean** true if 'value' is a regexp, false otherwise.
 
-### is.string(value)
+### string(value)
 
 Test if 'value' is a string.
 Alias: str
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -629,12 +655,12 @@ Alias: str
 
 * **Boolean** true if 'value' is a string, false otherwise.
 
-### is.emptyString(value)
+### emptyString(value)
 
 Test if 'value' is an empty string.
 Alias: emptyStr
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
@@ -642,15 +668,16 @@ Alias: emptyStr
 
 * **Boolean** true if 'value' is am empty string, false otherwise.
 
-### is.nonEmptyString(value)
+### nonEmptyString(value)
 
 Test if 'value' is a non-empty string.
 Alias: nonEmptyStr
 
-#### Params:
+#### Params: 
 
 * **Any** *value* to test.
 
 #### Return:
 
 * **Boolean** true if 'value' is a non-empty string, false otherwise.
+
