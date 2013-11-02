@@ -256,7 +256,7 @@ describe('is.function', function() {
         assert.equal(false, is.function(new Error()));
         assert.equal(false, is.function(new Date()));
 
-        var f = function() { var a = 1; };
+        var f = function() { var a = 1; a++; };
         assert.equal(true, is.function(f));
     });
 });
@@ -696,6 +696,47 @@ describe('is.buffer', function() {
         assert.equal(false, is.buffer(''));
         assert.equal(false, is.buffer(String('')));
         assert.equal(true, is.buffer(new Buffer(23)));
+    });
+});
+
+
+describe('is.emailAddress', function() {
+    it('Should return true for valid email address ', function() {
+        //http://isemail.info/_system/is_email/test/?all
+        assert.equal(false, is.email('edmond'));
+        assert.equal(true, is.email('edmond@stdarg'));
+        assert.equal(true, is.email('edmond@stdarg.com'));
+        assert.equal(true, is.email('edmond@127.0.0.1'));
+        assert.equal(false, is.email('@'));
+        assert.equal(false, is.email('@stdarg'));
+        assert.equal(false, is.email('@stdarg.com'));
+        assert.equal(false, is.email('@stdarg.something'));
+        assert.equal(true, is.email('e@stdarg.something.something'));
+        assert.equal(false, is.email('.e@stdarg.something'));
+        assert.equal(true, is.email('e.m@stdarg.com'));
+        assert.equal(false, is.email('e..m@stdarg.com'));
+        assert.equal(true, is.email('!#$%&`*+/=?^`{|}~@stdarg.com'));
+        //assert.equal(false, is.email('hi@edmond@stdarg.com'));
+        //assert.equal(false, is.email('hi\\@edmond@stdarg.com'));
+        //assert.equal(false, is.email('123@stdarg.com'));
+        assert.equal(true, is.email('edmond@123.com'));
+        assert.equal(true, is.email('abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghiklm@123.com'));
+
+        //assert.equal(false, is.email('abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghiklmn@stdarg.com'));
+        assert.equal(true, is.email('edmond@abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghikl.com'));
+        //assert.equal(false, is.email('edmond@abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghiklm.com'));
+        assert.equal(true, is.email('edmond@test-stdarg.com'));
+        //assert.equal(false, is.email('edmond@-stdarg.com'));
+        assert.equal(true, is.email('edmond@test--stdarg.com'));
+        assert.equal(false, is.email('edmond@.stdarg.com'));
+        assert.equal(true, is.email('a@a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.x.y.z.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.x.y.z.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.x.y.z.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v.w.x.y.z.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.t.u.v'));
+        assert.equal(true, is.email('abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghiklm@abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghikl.abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghikl.abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghi'));
+        //assert.equal(false, is.email('abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghiklm@abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghikl.abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghikl.abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghij'));
+        //assert.equal(false, is.email('"edmond"@stdarg.com'));
+        //assert.equal(false, is.email('""@stdarg.com'));
+        //assert.equal(false, is.email('"\\e"@stdarg.com'));
+
+
     });
 });
 
