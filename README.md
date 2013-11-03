@@ -1,8 +1,13 @@
 is2
 ===
-is2 is a type-checking module for node.js to test values. Is does not throw exceptions and every function only returns true or false. Use is2 to validate types in your node.js code. Every function in is2 returns either true of false.
+is2 is a type-checking module for node.js to test values. Is does not throw
+exceptions and every function only returns true or false. Use is2 to validate
+types in your node.js code. Every function in is2 returns either true of false.
 
-After finding Enrico Marino's module is, the concise syntax amazed, but there were syntax issues that made using is difficult. This fork of is fixes those issues, but the module is no longer cross-platform. Also, added tests via mocha which can be run using 'npm test'.
+After finding Enrico Marino's module is, the concise syntax amazed, but there
+were syntax issues that made using is difficult. This fork of is fixes those
+issues, but the module is no longer cross-platform. Also, added tests via mocha
+which can be run using 'npm test'.
 
 ## Installation
 To install is2, type:
@@ -51,7 +56,8 @@ Alias: nullOrUndef
 * **Boolean** True if value is null or undefined, false otherwise.
 
 ### empty\(value\)
-Test if 'value' is empty. To be empty means to be an array, object or string with nothing contained.
+Test if 'value' is empty. To be empty means to be an array, object or string
+with nothing contained.
 
 ##### Params: 
 * **Any** *value* value to test.
@@ -60,8 +66,8 @@ Test if 'value' is empty. To be empty means to be an array, object or string wit
 * **Boolean** true if 'value' is empty, false otherwise.
 
 ### objEquals\(value, other\)
-Do a deep comparision of two objects for equality. Will recurse without any limits. Meant to be
-called by equal only.
+Do a deep comparision of two objects for equality. Will recurse without any
+limits. Meant to be called by equal only.
 
 ##### Params: 
 * **Object** *value* The first object to compare.
@@ -71,8 +77,8 @@ called by equal only.
 * **Boolean** true, if the objects are equivalent, false otherwise.
 
 ### equal\(value, other\)
-Test if 'value' is equal to 'other'. Works for objects and arrays and will do deep comparisions,
-using recursion.
+Test if 'value' is equal to 'other'. Works for objects and arrays and will do
+deep comparisions, using recursion.
 Alias: eq
 
 ##### Params: 
@@ -86,7 +92,8 @@ Alias: eq
 JS Type definitions which cannot host values.
 
 ### hosted\(value, host\)
-Test if 'key' in host is an object. To be hosted means host\[value\] is an object.
+Test if 'key' in host is an object. To be hosted means host\[value\] is an
+object.
 
 ##### Params: 
 * **Any** *value* The value to test.
@@ -152,7 +159,8 @@ Alias: args
 * **Any** *value* value to test
 
 ##### Returns:
-* **Boolean** true if 'value' is an arguments object with no args, false otherwise
+* **Boolean** true if 'value' is an arguments object with no args, false
+  otherwise
 
 ### array\(value\)
 Test if 'value' is an array.
@@ -172,7 +180,8 @@ Aliases: nonEmptyArry, nonEmptyAry
 * **Any** *value* The value to test.
 
 ##### Returns:
-* **Boolean** true if 'value' is an array with at least 1 value, false otherwise.
+* **Boolean** true if 'value' is an array with at least 1 value, false
+  otherwise.
 
 ### nonEmptyArray\(value\)
 Test if 'value' is an array containing no entries.
@@ -195,7 +204,8 @@ Aliases: arguents.empty, args.empty, ary.empty, arry.empty
 * **Boolean** true if 'value' is an empty array\(like\), false otherwise.
 
 ### arrayLike\(value\)
-Test if 'value' is an arraylike object \(i.e. it has a length property with a valid value\)
+Test if 'value' is an arraylike object \(i.e. it has a length property with a
+valid value\)
 Aliases: arraylike, arryLike, aryLike
 
 ##### Params: 
@@ -424,7 +434,8 @@ Alias: lessThanOrEq, lessThanOrEqual
 * **Number** *other* value to compare with
 
 ##### Returns:
-* **Boolean** true, if 'value' is less than or equal to 'other', false otherwise.
+* **Boolean** true, if 'value' is less than or equal to 'other', false
+  otherwise.
 
 ### lt\(value, other\)
 Test if 'value' is less than 'other'.
@@ -447,10 +458,12 @@ Alias: withIn
 * **Number** *finish* upper bound.
 
 ##### Returns:
-* **Boolean** true if 'value' is is within 'start' and 'finish', false otherwise.
+* **Boolean** true if 'value' is is within 'start' and 'finish', false
+  otherwise.
 
 ### object\(value\)
-Test if 'value' is an object. Note: Arrays, RegExps, Date, Error, etc all return false.
+Test if 'value' is an object. Note: Arrays, RegExps, Date, Error, etc all return
+false.
 Alias: obj
 
 ##### Params: 
@@ -524,14 +537,69 @@ Alias: nonEmptyStr
 Test if value is a valid email address. We're testing only the email address not
 the user name with an email address, edmond@stdarg.com and not "Edmond
 Meinfelder" <edmond@stdarg.com>. The email address does not need a fully
-qualified host, but does expact an '@host', so 'edmond' is false but
-'edmond@stdarg' is true. Edge cases exists where this returns the wrong result.
+qualified host, but does expect an '@host', so 'edmond' is false but
+'edmond@stdarg' is true.
+Aliases: email, emailAddr
 
 ##### Params:
 * **Any** *value* to test.
 
 ##### Returns:
 * **Boolean** true if 'value' is a valid email address and false otherwise.
+
+### ipv4Address\(value\)
+Test if a value is a valid IPv4 numeric address. Non-routable IPv4 address are
+still valid addresses. This function expects 4 octets separated by '.' with
+valid values of 0-255 inclusive.
+Aliases: ipv4, ipv4Addr
+
+##### Params:
+* **Any** *value* to test.
+
+##### Returns:
+* **Boolean** true if 'value' is a valid ipv4 address and false otherwise.
+
+### ipv6Address\(value\)
+Test if a value is a valid IPv6 numeric address.
+Aliases: ipv6, ipv6Addr
+
+##### Params:
+* **Any** *value* to test.
+
+##### Returns:
+* **Boolean** true if 'value' is a valid IPv6 address and false otherwise.
+
+### ipAddress\(value\)
+Test if a value is a valid IPv6 or IPv4 numeric address.
+Aliases: ip, ipAddr
+
+##### Params:
+* **Any** *value* to test.
+
+##### Returns:
+* **Boolean** true if 'value' is a valid IPv6 or IPv4 address and false
+  otherwise.
+
+### dnsAddress\(value\)
+Test if a value is a valid DNS address.
+Aliases: dns, dnsAddr
+
+##### Params:
+* **Any** *value* to test.
+
+##### Returns:
+* **Boolean** true if 'value' is a valid DNS address and false otherwise.
+
+### hostAddress\(value\)
+Test if a value is a valid IPv4, ipv6 or DNS address.
+Aliases: hostIp, hostAddr
+
+##### Params:
+* **Any** *value* to test.
+
+##### Returns:
+* **Boolean** true if 'value' is a valid IPv4, IPv6 or DNS address and false
+  otherwise.
 
 ## License
 The MIT License (MIT)

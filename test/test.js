@@ -740,3 +740,69 @@ describe('is.emailAddress', function() {
     });
 });
 
+describe('is.ipv4Address', function() {
+    it('Should return true for valid ip address ', function() {
+        assert.equal(false, is.ipv4('edmond'));
+        assert.equal(false, is.ipv4('192.168.0.2000000000'));
+
+        assert.equal(true, is.ipv4('192.168.0.2'));
+        assert.equal(false, is.ipv4('336.332'));
+        assert.equal(true, is.ipv4('255.255.255.0'));
+        assert.equal(true, is.ipv4('255.255.255.255'));
+        assert.equal(true, is.ipv4('0.0.0.0'));
+        assert.equal(false, is.ipv4('192.168.a.0'));
+    });
+});
+
+describe('is.ipv6Address', function() {
+    it('Should return true for valid ip address ', function() {
+        assert.equal(false, is.ipv6('edmond'));
+        assert.equal(false, is.ipv6('192.168.0.2000000000'));
+
+        assert.equal(false, is.ipv6('192.168.0.2'));
+        assert.equal(false, is.ipv6('336.332'));
+        assert.equal(false, is.ipv6(''));
+        assert.equal(false, is.ipv6('---'));
+
+        assert.equal(false, is.ipv6('2001:db8:3333:4444:5555:6666:1.2.3.4'));
+        assert.equal(true, is.ipv6('2001:0000:1234:0000:0000:C1C0:ABCD:0876'));
+        assert.equal(false, is.ipv6('2001:0000:1234:0000:0000:C1C0:ABCD:0876 0'));
+        assert.equal(false, is.ipv6('2001:0000:1234: 0000:0000:C1C0:ABCD:0876'));
+        assert.equal(false, is.ipv6('2001:1:1:1:1:1:255Z255X255Y255'));
+        assert.equal(true, is.ipv6('2001:0:1234::C1C0:ABCD:876'));
+        assert.equal(false, is.ipv6('3ffe:0b00:0000:0000:0001:0000:0000:000a'));
+        assert.equal(false, is.ipv6('3ffe:b00::1:0:0:a'));
+        assert.equal(true, is.ipv6('FF02:0000:0000:0000:0000:0000:0000:0001'));
+        assert.equal(true, is.ipv6('FF02::1'));
+        assert.equal(true, is.ipv6('0000:0000:0000:0000:0000:0000:0000:0001'));
+        assert.equal(true, is.ipv6('0000:0000:0000:0000:0000:0000:0000:0000'));
+        assert.equal(true, is.ipv6('::'));
+        assert.equal(false, is.ipv6('::ffff:192.168.1.26')); // fix
+        assert.equal(false, is.ipv6('02001:0000:1234:0000:0000:C1C0:ABCD:0876'));
+        assert.equal(false, is.ipv6('2001:0000:1234:0000:00001:C1C0:ABCD:0876'));
+        assert.equal(true, is.ipv6('2001:0:1234::C1C0:ABCD:876'));
+        assert.equal(true, is.ipv6('2001:0000:1234:0000:0000:C1C0:ABCD:0876'));
+        assert.equal(false, is.ipv6('2001:0000:1234:0000:0000:C1C0:ABCD:0876 0'));
+        assert.equal(false, is.ipv6('2001:0000:1234: 0000:0000:C1C0:ABCD:0876'));
+    });
+});
+
+describe('is.dnsAddress', function() {
+    it('Should return true for valid dns address ', function() {
+        assert.equal(true, is.dns('stdarg'));
+        assert.equal(true, is.dns('stdarg.com'));
+        assert.equal(true, is.dns('www.stdarg.com'));
+        //assert.equal(false, is.dns('336.332'));
+        assert.equal(true, is.dns('3stdarg.com'));
+        assert.equal(false, is.dns('192.168.0.2000000000'));
+        assert.equal(false, is.dns('192.168.0.2'));
+        assert.equal(false, is.dns('*hi*.com'));
+        assert.equal(false, is.dns('-hi-.com'));
+        assert.equal(false, is.dns('_stdrg-.com'));
+        assert.equal(true, is.dns('www--stdrg.com'));
+        assert.equal(false, is.dns(':54:sda54'));
+        assert.equal(false, is.dns('2001:db8:3333:4444:5555:6666:1.2.3.4'));
+        assert.equal(false, is.dns('2001:0000:1234: 0000:0000:C1C0:ABCD:0876'));
+        assert.equal(false, is.dns('2001:1:1:1:1:1:255Z255X255Y255'));
+    });
+});
