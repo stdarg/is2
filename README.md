@@ -601,6 +601,15 @@ Aliases: hostIp, hostAddr
 * **Boolean** true if 'value' is a valid IPv4, IPv6 or DNS address and false
   otherwise.
 
+### port\(value\)
+Test if a value is a valid TCP/IP port number.
+
+##### Params:
+* **Any** *value* to test.
+
+##### Returns:
+* **Boolean** true if 'value' is a valid port number, and false otherwise.
+
 ## License
 The MIT License (MIT)
 

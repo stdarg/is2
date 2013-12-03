@@ -806,3 +806,26 @@ describe('is.dnsAddress', function() {
         assert.equal(false, is.dns('2001:1:1:1:1:1:255Z255X255Y255'));
     });
 });
+
+describe('is.port', function() {
+    it('Should return true for valid port numbers ', function() {
+        assert.equal(true, is.port(1));
+        assert.equal(true, is.port(10));
+        assert.equal(true, is.port(100));
+        assert.equal(true, is.port(65535));
+    });
+    it('Should return false for invalid port numbers ', function() {
+        assert.equal(false, is.port(0));
+        assert.equal(false, is.port(-10));
+        assert.equal(false, is.port(-1100));
+        assert.equal(false, is.port(65536));
+        assert.equal(false, is.port());
+        assert.equal(false, is.port(null));
+        assert.equal(false, is.port('22'));
+        assert.equal(false, is.port('heya'));
+        assert.equal(false, is.port(true));
+        assert.equal(false, is.port({a:22}));
+        assert.equal(false, is.port([]));
+        assert.equal(false, is.port([1,2,3]));
+    });
+});
