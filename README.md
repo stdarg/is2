@@ -88,9 +88,6 @@ Alias: eq
 ##### Returns:
 * **Boolean** true if 'value' is equal to 'other', false otherwise
 
-### NON_HOST_TYPES
-JS Type definitions which cannot host values.
-
 ### hosted\(value, host\)
 Test if 'key' in host is an object. To be hosted means host\[value\] is an
 object.
@@ -114,7 +111,6 @@ Aliases: instOf, instanceof
 
 ### buffer\(value\)
 Test if 'value' is an instance of Buffer.
-Aliases: instOf, instanceof
 
 ##### Params: 
 * **Any** *value* value to test.
