@@ -606,6 +606,25 @@ Test if a value is a valid TCP/IP port number.
 ##### Returns:
 * **Boolean** true if 'value' is a valid port number, and false otherwise.
 
+### systemPort\(value\)
+Test if a value is a valid TCP/IP system port number in the range 0 - 1023.
+Alias: sysPort
+
+##### Params:
+* **Any** *value* to test.
+
+##### Returns:
+* **Boolean** true if 'value' is a valid system port number, and false otherwise.
+
+### userPort\(value\)
+Test if a value is a valid TCP/IP user port number in the range 1024 - 65535.
+
+##### Params:
+* **Any** *value* to test.
+
+##### Returns:
+* **Boolean** true if 'value' is a valid user port number, and false otherwise.
+
 ## License
 The MIT License (MIT)
 

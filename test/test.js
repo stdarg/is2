@@ -809,15 +809,22 @@ describe('is.dnsAddress', function() {
 
 describe('is.port', function() {
     it('Should return true for valid port numbers ', function() {
+        assert.equal(false, is.port(-11));
+        assert.equal(false, is.port(-11));
+        assert.equal(true, is.port(0));
         assert.equal(true, is.port(1));
         assert.equal(true, is.port(10));
         assert.equal(true, is.port(100));
         assert.equal(true, is.port(65535));
+        assert.equal(false, is.port(65536));
     });
+
     it('Should return false for invalid port numbers ', function() {
-        assert.equal(false, is.port(0));
-        assert.equal(false, is.port(-10));
         assert.equal(false, is.port(-1100));
+        assert.equal(false, is.port(-10));
+        assert.equal(true, is.port(0));
+        assert.equal(true, is.port(10));
+        assert.equal(true, is.port(65535));
         assert.equal(false, is.port(65536));
         assert.equal(false, is.port());
         assert.equal(false, is.port(null));
@@ -829,3 +836,28 @@ describe('is.port', function() {
         assert.equal(false, is.port([1,2,3]));
     });
 });
+
+describe('is.systemPort', function() {
+    it('Should return true for valid port numbers 0-1023 ', function() {
+        assert.equal(false, is.systemPort(-1));
+        assert.equal(true, is.systemPort(0));
+        assert.equal(true, is.systemPort(1));
+        assert.equal(true, is.systemPort(1023));
+        assert.equal(false, is.systemPort(1024));
+        assert.equal(false, is.systemPort(10000));
+    });
+});
+
+describe('is.userPort', function() {
+    it('Should return true for valid port numbers 1024-65535 ', function() {
+        assert.equal(false, is.userPort(-1));
+        assert.equal(false, is.userPort(0));
+        assert.equal(false, is.userPort(1));
+        assert.equal(false, is.userPort(1023));
+        assert.equal(true, is.userPort(1024));
+        assert.equal(true, is.userPort(1025));
+        assert.equal(true, is.userPort(65535));
+        assert.equal(false, is.userPort(65536));
+    });
+});
+
