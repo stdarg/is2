@@ -26,9 +26,9 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   ],
-  "main": "./lib/is2.js",
+  "main": "./index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter list"
+    "test": "./node_modules/.bin/mocha --reporter list tests.js"
   },
   "engines": {
     "node": ">=v0.6.0"
