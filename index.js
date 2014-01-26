@@ -726,7 +726,7 @@ var dnsLabel = /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/;
 
 /**
  * Test is a value is a valid ipv4, ipv6 or DNS name.
- * Aliases: hostAddr, hostAddress.
+ * Aliases: host, hostAddr, hostAddress.
  * @param {Any} value to test if a host address.
  * @return {Boolean} true if a host address, false otherwise.
  */
@@ -734,7 +734,7 @@ is.hostAddress = function(value) {
     if (!is.nonEmptyStr(value)) return false;
     return is.dns(value) || is.ipv4(value) || is.ipv6(value);
 };
-is.hostIp = is.hostAddr = is.hostAddress;
+is.host = is.hostIp = is.hostAddr = is.hostAddress;
 
 /**
  * Test if a number is a valid TCP port
