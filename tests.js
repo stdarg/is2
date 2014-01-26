@@ -1,6 +1,6 @@
 'use strict';
 var assert = require('assert');
-var is = require('../lib/is2');
+var is = require('./index');
 
 describe('is.a()', function() {
     it('Should return true if value is equal to string type', function(){
@@ -166,6 +166,7 @@ describe('is.arrayLike', function() {
         assert.equal(false, is.arrayLike(new Error()));
 
         var f = function(arg1, arg2) {
+            /* jshint unused: false */
             assert.equal(true, is.arrayLike(arguments));
         };
         f('test1', false);
