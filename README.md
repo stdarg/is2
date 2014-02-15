@@ -66,8 +66,8 @@ Object State:
 
 * is.empty(val)
 * is.emptyArguments(val) - is.emptyArgs, is.noArgs
-* is.array.empty(val)
 * is.emptyArray(val) - is.emptyArry, is.emptyAry, is.emptyArray
+* is.emptyArrayLike(val) - is.emptyArrLike
 * is.emptyString(val) - is.emptyStr
 * is.nonEmptyArray(val) - is.nonEmptyArry, is.nonEmptyAry
 * is.nonEmptyObject(val) - is.nonEmptyObj
@@ -110,6 +110,27 @@ Networking:
 * is.port(val)
 * is.systemPort(val) - is.sysPort
 * is.userPort(val)
+
+Credit Cards:
+
+* is.creditCardNumber(str) - is.creditCard, is.creditCardNum
+* is.americanExpressCardNumber(str) - is.amexCardNum, is.amexCard
+* is.chinaUnionPayCardNumber(str) - is.chinaUnionPayCard, is.chinaUnion
+* is.dankortCardNumber(str) - is.dankortCard, is.dankort
+* is.dinersClubCarteBlancheCardNumber(str) - is.dinersClubCarteBlancheCard,
+  is.dinersClubCB
+* is.dinersClubInternationalCardNumber(str) - is.dinersClubInternationalCard,
+  is.dinersClubInt
+* is.dinersClubUSACanadaCardNumber(str) - is.dinersClubUSACanCard, is.dinersClub
+* is.discoverCardNumber(str) - is.discoverCard, is.discover
+* is.instaPaymentCardNumber(str) - is.instaPayment
+* is.jcbCardNumber(str) - is.jcbCard, is.jcb
+* is.laserCardNumber(str) - is.laserCard, is.laser
+* is.maestroCardNumber(str) - is.maestroCard, is.maestro
+* is.masterCardCardNumber - is.masterCardCard, is.masterCard
+* is.visaCardNumber(str) - is.visaCard, is.visa
+* is.visaElectronCardNumber(str) - is.visaElectronCard, is.visaElectron
+
 
 ## License
 The MIT License (MIT)

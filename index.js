@@ -26,7 +26,7 @@ is.version = '0.0.12';
  * @return {Boolean} true if the environment has process, process.version and process.versions.
  */
 is.browser = function() {
-    return (!is.node() && typeof window === 'object');
+    return (!is.node() && typeof window !== 'undefined' && toString.call(window) === '[object global]');
 };
 
 /**
@@ -44,10 +44,11 @@ is.def = is.defined;
  * Tests if is is running under node.js
  * @return {Boolean} true if the environment has process, process.version and process.versions.
  */
-is.node = function() {
+is.nodejs = function() {
     return (process && process.hasOwnProperty('version') &&
             process.hasOwnProperty('versions'));
 };
+is.node = is.nodejs;
 
 /**
  * Test if 'value' is undefined.
@@ -73,7 +74,7 @@ is.udef = is.undef = is.undefined;
 is.array = function(value) {
     return '[object Array]' === toString.call(value);
 };
-is.ary = is.arry = is.array;
+is.arr = is.ary = is.arry = is.array;
 
 /**
  * Test if 'value' is an arraylike object (i.e. it has a length property with a valid value)
@@ -119,7 +120,7 @@ is.bool = is.boolean;
  * @return {Boolean} true if 'value' is an instance of 'constructor'.
  */
 is.buffer = function(value) {
-    return Buffer.isBuffer(value);
+    return is.nodejs() && Buffer && Buffer.hasOwnProperty('isBuffer') && Buffer.isBuffer(value);
 };
 is.buff = is.buf = is.buffer;
 
@@ -314,14 +315,14 @@ is.instOf = is.instanceof = is.instanceOf;
  * @param {object} objType an object type to compare.
  * @return {Boolean} true if 'value' is an object, false otherwise.
  */
-is.objectInstanceof = function(objInst, objType) {
+is.objectInstanceOf = function(objInst, objType) {
     try {
         return '[object Object]' === toString.call(objInst) && (objInst instanceof objType);
     } catch(err) {
         return false;
     }
 };
-is.instOf = is.instanceOf = is.objInstOf = is.objectInstanceOf = is.objectInstanceof;
+is.instOf = is.instanceOf = is.objInstOf = is.objectInstanceOf
 
 /**
  * Test if 'value' is a type of 'type'.
@@ -371,18 +372,7 @@ is.empty = function(value) {
 is.emptyArguments = function(value) {
     return '[object Arguments]' === toString.call(value) && value.length === 0;
 };
-is.array.empty = is.noArgs = is.emptyArgs = is.emptyArguments;
-
-/**
- * Test if 'value' is an empty array(like) object.
- * Aliases: arguents.empty, args.empty, ary.empty, arry.empty
- * @param {Any} value value to test.
- * @return {Boolean} true if 'value' is an empty array(like), false otherwise.
- */
-is.array.empty = function(value) {
-    return value.length === 0;
-};
-is.arguments.empty = is.args.empty = is.ary.empty = is.arry.empty = is.array.empty;
+is.noArgs = is.emptyArgs = is.emptyArguments;
 
 /**
  * Test if 'value' is an array containing no entries.
@@ -394,6 +384,17 @@ is.emptyArray = function(value) {
     return '[object Array]' === toString.call(value) && value.length === 0;
 };
 is.emptyArry = is.emptyAry = is.emptyArray;
+
+/**
+ * Test if 'value' is an empty array(like) object.
+ * Aliases: arguents.empty, args.empty, ary.empty, arry.empty
+ * @param {Any} value value to test.
+ * @return {Boolean} true if 'value' is an empty array(like), false otherwise.
+ */
+is.emptyArrayLike = function(value) {
+    return value.length === 0;
+};
+is.emptyArrLike = is.emptyArrayLike;
 
 /**
  * Test if 'value' is an empty string.
@@ -415,7 +416,7 @@ is.emptyStr = is.emptyString;
 is.nonEmptyArray = function(value) {
     return '[object Array]' === toString.call(value) && value.length > 0;
 };
-is.nonEmptyArry = is.nonEmptyAry = is.nonEmptyArray;
+is.nonEmptyArr = is.nonEmptyArry = is.nonEmptyAry = is.nonEmptyArray;
 
 /**
  * Test if 'value' is an object with properties. Note: Arrays are objects.
@@ -460,7 +461,7 @@ is.even = function(value) {
 is.decimal = function(value) {
     return '[object Number]' === toString.call(value) && value % 1 !== 0;
 };
-is.decNum = is.decimal;
+is.dec = is.decNum = is.decimal;
 
 /**
  * Test if 'value' is an integer.
@@ -797,3 +798,346 @@ is.userPort = function(value) {
         return true;
     return false;
 };
+
+/*
+function sumDigits(num) {
+    var str = num.toString();
+    var sum = 0;
+    for (var i = 0; i < str.length; i++)
+        sum += (str[i]-0);
+    return sum;
+}
+*/
+
+/**
+ * Test if a string is a credit card.
+ * From http://en.wikipedia.org/wiki/Luhn_algorithm
+ * @param {String} value to test if a credit card.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.creditCardNumber = function(str) {
+    if (!is.str(str))
+        return false;
+
+    var ary = str.split('');
+    var i, cnt;
+    // From the rightmost digit, which is the check digit, moving left, double
+    // the value of every second digit;
+    for (i=ary.length-1, cnt=1; i>-1; i--, cnt++) {
+        if (cnt%2 === 0)
+            ary[i] *= 2;
+    }
+
+    str = ary.join('');
+    var sum = 0;
+    // if the product of the previous doubling operation is greater than 9
+    // (e.g., 7 * 2 = 14), then sum the digits of the products (e.g., 10: 1 + 0
+    // = 1, 14: 1 + 4 = 5).  We do the this by joining the array of numbers and
+    // add adding the int value of all the characters in the string.
+    for (i=0; i<str.length; i++)
+        sum += Math.floor(str[i]);
+
+    // If the total (sum) modulo 10 is equal to 0 (if the total ends in zero)
+    // then the number is valid according to the Luhn formula; else it is not
+    // valid.
+    return sum % 10 === 0;
+};
+is.creditCard = is.creditCardNum = is.creditCardNumber;
+
+
+////////////////////////////////////////////////////////////////////////////////
+// The following credit card info is from:
+// http://en.wikipedia.org/wiki/Bank_card_number#Issuer_identification_number_.28IIN.29
+
+/**
+ * Test if card number is an American Express card.
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.americanExpressCardNumber = function(str) {
+    if (!is.str(str) || str.length !== 15)
+        return false;
+
+    var prefix = Math.floor(str.slice(0,2));
+    if (prefix !== 34 && prefix !== 37)
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.amexCard = is.amexCardNum = is.americanExpressCardNumber;
+
+/**
+ * Test if card number is a China UnionPay card.
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.chinaUnionPayCardNumber = function(str) {
+    if (!is.str(str) || (str.length < 16 && str.length > 19))
+        return false;
+
+    var prefix = Math.floor(str.slice(0,2));
+    if (prefix !== 62 && prefix !== 88)
+        return false;
+
+    // no validation for this card
+    return true;
+};
+is.chinaUnion = is.chinaUnionPayCard = is.chinaUnionPayCardNumber;
+
+/**
+ * Test if card number is a Diner's Club Carte Blance card.
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.dinersClubCarteBlancheCardNumber = function(str) {
+    if (!is.str(str) || str.length !== 14)
+        return false;
+
+    var prefix = Math.floor(str.slice(0,3));
+    if (prefix < 300 || prefix > 305)
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.dinersClubCB = is.dinersClubCarteBlancheCard =
+    is.dinersClubCarteBlancheCardNumber;
+
+/**
+ * Test if card number is a Diner's Club International card.
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.dinersClubInternationalCardNumber = function(str) {
+    if (!is.str(str) || str.length !== 14)
+        return false;
+    var prefix = Math.floor(str.slice(0,3));
+    var prefix2 = Math.floor(str.slice(0,2));
+
+    // 300-305, 309, 36, 38-39
+    if ((prefix < 300 || prefix > 305) && prefix !== 309 && prefix2 !== 36 &&
+        (prefix2 < 38 || prefix2 > 39)) {
+        return false;
+    }
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.dinersClubInt = is.dinersClubInternationalCard =
+    is.dinersClubInternationalCardNumber;
+
+/**
+ * Test if card number is a Diner's Club USA & CA card.
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.dinersClubUSACanadaCardNumber = function(str) {
+    if (!is.str(str) || str.length !== 16)
+        return false;
+    var prefix = Math.floor(str.slice(0,2));
+
+    if (prefix !== 54 && prefix !== 55)
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.dinersClub = is.dinersClubUSACanCard = is.dinersClubUSACanadaCardNumber;
+
+/**
+ * Test if card number is a Diner's Club USA/CA card.
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.discoverCardNumber = function(str) {
+    if (!is.str(str) || str.length !== 16)
+        return false;
+
+    var prefix = Math.floor(str.slice(0,6));
+    var prefix2 = Math.floor(str.slice(0,3));
+
+    if (str.slice(0,4) !== '6011' && (prefix < 622126 || prefix > 622925) &&
+        (prefix2 < 644 || prefix2 > 649) && str.slice(0,2) !== '65') {
+        return false;
+    }
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.discover = is.discoverCard = is.discoverCardNumber;
+
+/**
+ * Test if card number is an InstaPayment card number
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.instaPaymentCardNumber = function(str) {
+    if (!is.str(str) || str.length !== 16)
+        return false;
+
+    var prefix = Math.floor(str.slice(0,3));
+    if (prefix < 637 || prefix > 639)
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.instaPayment = is.instaPaymentCardNumber;
+
+/**
+ * Test if card number is a JCB card number
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.jcbCardNumber = function(str) {
+    if (!is.str(str) || str.length !== 16)
+        return false;
+
+    var prefix = Math.floor(str.slice(0,4));
+    if (prefix < 3528 || prefix > 3589)
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.jcb = is.jcbCard = is.jcbCardNumber;
+
+/**
+ * Test if card number is a Laser card number
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.laserCardNumber = function(str) {
+    if (!is.str(str) || (str.length < 16 && str.length > 19))
+        return false;
+
+    var prefix = Math.floor(str.slice(0,4));
+    var valid = [ 6304, 6706, 6771, 6709 ];
+    if (valid.indexOf(prefix) === -1)
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.laser = is.laserCard = is.laserCardNumber;
+
+/**
+ * Test if card number is a Maestro card number
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.maestroCardNumber = function(str) {
+    if (!is.str(str) || str.length < 12 || str.length > 19)
+        return false;
+
+    var prefix = str.slice(0,4);
+    var valid = [ '5018', '5020', '5038', '5612', '5893', '6304', '6759',
+        '6761', '6762', '6763', '0604', '6390' ];
+
+    if (valid.indexOf(prefix) === -1)
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.maestro = is.maestroCard = is.maestroCardNumber;
+
+/**
+ * Test if card number is a Dankort card number
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.dankortCardNumber = function(str) {
+    if (!is.str(str) || str.length !== 16)
+        return false;
+
+    if (str.slice(0,4) !== '5019')
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.dankort = is.dankortCard = is.dankortCardNumber;
+
+/**
+ * Test if card number is a MasterCard card number
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.masterCardCardNumber = function(str) {
+    if (!is.str(str) || str.length !== 16)
+        return false;
+
+    var prefix = Math.floor(str.slice(0,2));
+    if (prefix < 50 || prefix > 55)
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+is.masterCard = is.masterCardCard = is.masterCardCardNumber;
+
+/**
+ * Test if card number is a Visa card number
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.visaCardNumber = function(str) {
+    if (!is.str(str) || (str.length !== 13 && str.length !== 16))
+        return false;
+
+    if ('4' !== str.slice(0,1))
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+
+is.visa = is.visaCard = is.visaCardNumber;
+
+/**
+ * Test if card number is a Visa card number
+ * @param {String} the credit card number string to test.
+ * @return true if the string is the correct format, false otherwise
+ */
+is.visaElectronCardNumber = function(str) {
+    if (!is.str(str) || str.length !== 16)
+        return false;
+
+    var prefix = Math.floor(str.slice(0,4));
+    var valid = [ 4026, 4405, 4508, 4844, 4913, 4917 ];
+    if ('417500' !== str.slice(0,6) && valid.indexOf(prefix) === -1)
+        return false;
+
+    if (!is.creditCardNumber(str))
+        return false;
+
+    return true;
+};
+
+is.visaElectron = is.visaElectronCard = is.visaElectronCardNumber;
