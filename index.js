@@ -1137,7 +1137,7 @@ is.visaElectronCardNumber = function(str) {
     if (!is.creditCardNumber(str))
         return false;
 
-    return false;
+    return true;
 };
 
 is.visaElectron = is.visaElectronCard = is.visaElectronCardNumber;
