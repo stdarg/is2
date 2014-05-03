@@ -39,7 +39,7 @@
   },
   "main": "./index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter list tests.js"
+    "test": "./node_modules/.bin/mocha -C --reporter list tests.js"
   },
   "engines": {
     "node": ">=v0.6.0"
