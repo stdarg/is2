@@ -17,11 +17,11 @@ To install is2, type:
 
 ## Usage
 
-  var is, require('is2');
+    var is, require('is2');
 
-  console.log('true is equal to 1===1: '+(is.equal(true, 1===1));
-  console.log('10 is a positive number: '+(is.positiveNumber(10));
-  console.log('11 is an odd number: '+(is.oddNumber(11));
+    console.log('true is equal to 1===1: '+(is.equal(true, 1===1));
+    console.log('10 is a positive number: '+(is.positiveNumber(10));
+    console.log('11 is an odd number: '+(is.oddNumber(11));
 
 ## API
 
