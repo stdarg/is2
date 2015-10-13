@@ -1,6 +1,6 @@
 {
   "name": "is2",
-  "version": "0.0.13",
+  "version": "1.0.0",
   "description": "A type checking library where each exported function returns either true or false and does not throw. Also added tests.",
   "license": "MIT",
   "tags": [
@@ -42,10 +42,10 @@
     "test": "./node_modules/.bin/mocha -C --reporter list tests.js"
   },
   "engines": {
-    "node": ">=v0.6.0"
+    "node": ">=v0.10.0"
   },
   "dependencies": {
-    "deep-is": "0.1.2"
+    "deep-is": "0.1.3"
   },
   "devDependencies": {
     "mocha": "1.8.1",
