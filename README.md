@@ -53,6 +53,7 @@ Types:
 * is.regExp(val) - is.regexp, is.re
 * is.string(val) - is.str
 * is.true(val)
+* is.uuid(val)
 
 Relationships:
 

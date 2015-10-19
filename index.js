@@ -237,6 +237,17 @@ is.true = function(value) {
     return value === true;
 };
 
+/**
+ * Test if 'value' is a uuid.
+ * @param {Any} value to test.
+ * @return {Boolean} true if 'value is a valid RFC4122 UUID. Case non-specific.
+ */
+var uuidRegExp = new RegExp('[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab]'+
+                            '[0-9a-f]{3}-[0-9a-f]{12}', 'i');
+is.uuid = function(value) {
+    return uuidRegExp.test(value);
+};
+
 ////////////////////////////////////////////////////////////////////////////////
 // Object Relationships
 

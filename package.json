@@ -1,6 +1,6 @@
 {
   "name": "is2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A type checking library where each exported function returns either true or false and does not throw. Also added tests.",
   "license": "MIT",
   "tags": [

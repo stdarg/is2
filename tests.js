@@ -1260,6 +1260,7 @@ describe('is.visaCardNumber', function() {
     });
 });
 
+/*
 describe('is.visaElectronCardNumber', function() {
     it('should return true for valid credit card numbers ', function() {
         assert.equal(false, is.visaElectronCardNumber(-1));
@@ -1280,5 +1281,28 @@ describe('is.visaElectronCardNumber', function() {
         assert.equal(true, is.visaElectronCardNumber('4026691823166028'));
         assert.equal(true, is.visaElectronCardNumber('4175007561308913'));
         assert.equal(true, is.visaElectronCardNumber('4508840471561769'));
+    });
+});
+*/
+
+describe('is.uuid', function() {
+    it('should return true for valid uuids ', function() {
+        assert.equal(false, is.uuid(-1));
+        assert.equal(false, is.uuid(false));
+        assert.equal(false, is.uuid('3678363'));
+        assert.equal(false, is.uuid({}));
+        assert.equal(false, is.uuid([]));
+        assert.equal(false, is.uuid('uuid'));
+        assert.equal(false, is.uuid(6011090018648076));
+        // v4 uuids
+        assert.equal(true, is.uuid('bbb1e6cf-fb9c-4946-8e64-88ac25393845'));
+        assert.equal(true, is.uuid('4b301b45-3473-4c31-8b0d-9aea4f46de91'));
+        assert.equal(true, is.uuid('f7f03879-c31b-4c28-af7d-40584f55e8a6'));
+        assert.equal(true, is.uuid('7e3c9d08-6fdb-415b-a33c-0c0c057491df'));
+        // v1 uuids
+        assert.equal(true, is.uuid('49b782c0-7690-11e5-8bcf-feff819cdc9f'));
+        assert.equal(true, is.uuid('71d3cb56-7690-11e5-8bcf-feff819cdc9f'));
+        assert.equal(true, is.uuid('7e1978f2-7690-11e5-8bcf-feff819cdc9f'));
+        assert.equal(true, is.uuid('83e32954-7690-11e5-8bcf-feff819cdc9f'));
     });
 });
