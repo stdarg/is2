@@ -1287,6 +1287,9 @@ describe('is.visaElectronCardNumber', function() {
 
 describe('is.uuid', function() {
     it('should return true for valid uuids ', function() {
+        assert.equal(false, is.uuid());
+        assert.equal(false, is.uuid(null));
+        assert.equal(false, is.uuid(-1));
         assert.equal(false, is.uuid(-1));
         assert.equal(false, is.uuid(false));
         assert.equal(false, is.uuid('3678363'));
