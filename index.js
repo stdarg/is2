@@ -695,16 +695,20 @@ is.withIn = is.within;
 is.dnsAddress = function(value) {
     if (!is.nonEmptyStr(value))  return false;
     if (value.length > 255)  return false;
-    var names = value.split('.');
-    if (!is.array(names) || !names.length)  return false;
-    if (names[0].indexOf('_') > -1)  return false;
-    for (var i=0; i<names.length; i++) {
-        if (!dnsLabel.test(names[i]))  return false;
-    }
+    if (numbersLabel.test(value))  return false;
+    if (!dnsLabel.test(value))  return false;
     return true;
+    //var names = value.split('.');
+    //if (!is.array(names) || !names.length)  return false;
+    //if (names[0].indexOf('_') > -1)  return false;
+    //for (var i=0; i<names.length; i++) {
+        //if (!dnsLabel.test(names[i]))  return false;
+    //}
+    //return true;
 };
 is.dnsAddr = is.dns = is.dnsAddress;
-var dnsLabel = /^(?![0-9]+$)(?!.*-$)(?!-)[a-zA-Z0-9-]{1,63}$/;
+var dnsLabel = /^([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])(\.([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]{0,61}[a-zA-Z0-9]))*$/;
+var numbersLabel = /^([0-9]|[0-9][0-9\-]{0,61}[0-9])(\.([0-9]|[0-9][0-9\-]{0,61}[0-9]))*$/;
 
 /**
  * Test if value is a valid email address.

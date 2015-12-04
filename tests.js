@@ -910,9 +910,10 @@ describe('is.ipv6Address', function() {
 describe('is.dnsAddress', function() {
     it('should return true for valid dns address ', function() {
         assert.equal(true, is.dns('stdarg'));
+
         assert.equal(true, is.dns('stdarg.com'));
         assert.equal(true, is.dns('www.stdarg.com'));
-        //assert.equal(false, is.dns('336.332'));
+        assert.equal(false, is.dns('336.332'));
         assert.equal(true, is.dns('3stdarg.com'));
         assert.equal(false, is.dns('192.168.0.2000000000'));
         assert.equal(false, is.dns('192.168.0.2'));
@@ -1309,3 +1310,27 @@ describe('is.uuid', function() {
         assert.equal(true, is.uuid('83e32954-7690-11e5-8bcf-feff819cdc9f'));
     });
 });
+
+describe('is.hostAddress', function() {
+    it('should return true for valid uuids ', function() {
+        assert.equal(false, is.hostAddress());
+        assert.equal(false, is.hostAddress(null));
+        assert.equal(false, is.hostAddress(-1));
+        assert.equal(false, is.hostAddress(-1));
+        assert.equal(false, is.hostAddress(false));
+        assert.equal(false, is.hostAddress('3678363'));
+        assert.equal(false, is.hostAddress({}));
+        assert.equal(false, is.hostAddress([]));
+        assert.equal(false, is.hostAddress(6011090018648076));
+        assert.equal(false, is.hostAddress('1000000.10.1.1'));
+
+        assert.equal(true, is.hostAddress('192.168.1.1'));
+        assert.equal(true, is.hostAddress('10.10.1.1'));
+        assert.equal(true, is.hostAddress('www.google.com'));
+        assert.equal(true, is.hostAddress('finance.yahoo.com'));
+        assert.equal(true, is.hostAddress('google.com'));
+        assert.equal(true, is.hostAddress('google'));
+        assert.equal(true, is.hostAddress('close5-dev.5fxjas.0001.usw1.cache.amazonaws.com'));
+    });
+});
+
