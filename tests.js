@@ -1334,3 +1334,63 @@ describe('is.hostAddress', function() {
     });
 });
 
+describe('is.streetAddress', function(){
+  it('should return true for a string containing a street address', function(){
+    assert.equal(false, is.streetAddress());
+    assert.equal(false, is.streetAddress(null));
+    assert.equal(false, is.streetAddress(-1));
+    assert.equal(false, is.streetAddress('123'));
+    assert.equal(false, is.streetAddress(undefined));
+    assert.equal(false, is.streetAddress('192.168.0.1'));
+    assert.equal(false, is.streetAddress('some unrelated string, with nothing in common with any other strings in the room. \n Poor little guy'));
+    assert.equal(false, is.streetAddress('This string talks about money, and 55 dollars is nothing to scoff at, but shouldn\'t trigger a false positive.'));
+    assert.equal(false, is.streetAddress('This string doesn\'t use money, but it does use numbers like 23 is a good number, so is 999 or 234,432.'));
+
+    assert.equal(true, is.streetAddress('55 Main Street.'));
+    assert.equal(true, is.streetAddress('1999 Pullman Ave. Apt. 322'));
+    assert.equal(true, is.streetAddress('This is a long string with newline characters, \nthis should still capture an address like 123 Sesame Street.'));
+    assert.equal(true, is.streetAddress('I know I should\'t really have to do this,' +
+                'but template strings are an ES6 feature. If you want to submit ideas for this project,' +
+                'you should write to 89 Some Place, #33 San Francisco, CA 94130. Or, don\'t, the choice is up to you.'));
+  });
+});
+
+describe('is.zipCode', function(){
+  it('should return true for a string or number resembling a US zipcode', function(){
+    assert.equal(false, is.zipCode());
+    assert.equal(false, is.zipCode(1234));
+    assert.equal(false, is.zipCode('555-555-5555'));
+    assert.equal(false, is.zipCode(123456));
+    assert.equal(false, is.zipCode('10293-564372'));
+    assert.equal(false, is.zipCode({something: 'is wrong here'}));
+    assert.equal(false, is.zipCode(['something', 'is wrong here']));
+
+    assert.equal(true, is.zipCode(12345));
+    assert.equal(true, is.zipCode('99999'));
+    assert.equal(true, is.zipCode('12345-6789'));
+  });
+});
+
+describe('is.phoneNumber', function(){
+  it('should return true for a string containing a US phone number', function(){
+    assert.equal(false, is.phoneNumber());
+    assert.equal(false, is.phoneNumber(23897498729387));
+    assert.equal(false, is.phoneNumber('something with a 213219 number in it'));
+    assert.equal(false, is.phoneNumber('something with a 123,456,7890 number in it'));
+
+    assert.equal(true, is.phoneNumber('my number is 123.555.5767'));
+    assert.equal(true, is.phoneNumber('my number is 1 123-555-5767'));
+    assert.equal(true, is.phoneNumber('my number is (123) 555-5767'));
+    assert.equal(true, is.phoneNumber('my number is (123) 555.5767'));
+    assert.equal(true, is.phoneNumber('my number is 123 555 5767'));
+    assert.equal(true, is.phoneNumber('my number is 123 555 5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is (123) 555 5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 123-555-5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1.123.555.5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1-123-555-5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1 (123) 555-5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1 (123) 555 5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1 (123) 555                               5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1 (123) 555 \n5767 and here\'s some more text'));
+  });
+});
