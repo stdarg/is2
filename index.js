@@ -1191,3 +1191,16 @@ is.zipCode = function(str) {
   return zip.test(str);
 };
 is.zip = is.zipCode;
+
+/**
+ * Test if a string contains a US phone number
+ * @param {String} the string to search
+ * @return true if str contains a phone number, false otherwise.
+ */
+ is.phoneNumber = function(str){
+   if (!is.string(str))
+    return false;
+   var nums = /(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\(?)(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]‌​)\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\)?)\s*(?:[.-]\s*)?)?([2-9]1[02-‌​9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/g;
+   return nums.test(str);
+ };
+ is.phone = is.phoneNumber;

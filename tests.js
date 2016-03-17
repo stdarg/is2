@@ -1370,3 +1370,26 @@ describe('is.zipCode', function(){
     assert.equal(true, is.zipCode('12345-6789'));
   });
 });
+
+describe('is.phoneNumber', function(){
+  it('should return true for a string containing a US phone number', function(){
+    assert.equal(false, is.phoneNumber());
+    assert.equal(false, is.phoneNumber(23897498729387));
+    assert.equal(false, is.phoneNumber('something with a 213219 number in it'));
+
+    assert.equal(true, is.phoneNumber('my number is 123.555.5767'));
+    assert.equal(true, is.phoneNumber('my number is 1 123-555-5767'));
+    assert.equal(true, is.phoneNumber('my number is (123) 555-5767'));
+    assert.equal(true, is.phoneNumber('my number is (123) 555.5767'));
+    assert.equal(true, is.phoneNumber('my number is 123 555 5767'));
+    assert.equal(true, is.phoneNumber('my number is 123 555 5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is (123) 555 5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 123-555-5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1.123.555.5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1-123-555-5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1 (123) 555-5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1 (123) 555 5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1 (123) 555                               5767 and here\'s some more text'));
+    assert.equal(true, is.phoneNumber('my number is 1 (123) 555 \n5767 and here\'s some more text'));
+  });
+});
