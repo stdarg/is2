@@ -333,7 +333,7 @@ is.objectInstanceOf = function(objInst, objType) {
         return false;
     }
 };
-is.instOf = is.instanceOf = is.objInstOf = is.objectInstanceOf
+is.instOf = is.instanceOf = is.objInstOf = is.objectInstanceOf;
 
 /**
  * Test if 'value' is a type of 'type'.
@@ -1188,3 +1188,51 @@ is.matching = is.match = is.inArgs = function(val) {
 };
 
 
+
+// US Address components
+/**********************************
+***Definitely a work in progress***
+**********************************/
+/**
+ * Test if a string contains a US street address
+ * @param {String} the string to search
+ * @return true if an address is present, false otherwise
+ */
+is.streetAddress = function(str) {
+  if (!is.str(str))
+      return false;
+
+  var regex = /\b\d+[\s](?:[A-Za-z0-9.-]+[\s]+)+\b(ALLEY|ALY|AVENUE|AVE|BEND|BND|BLUFFS?|BLFS?|BOULEVARD|BLVD|BRANCH|BR|CENTERS?|CTRS?|CIRCLES?|CIRS?|CLIFFS?|CLFS?|COURTS?|CTS?|COVES?|CVS?|CREEK|CRK|CRESCENT|CRES|CREST|CRST|CROSSING|XING|DRIVES?|DRS?|EXPRESSWAY|EXPY|FREEWAY|FWY|HEIGHTS|HTS|HIGHWAY|HWY|HILLS?|HLS?|LANE|LN|LOOP|MANORS?|MNRS?|MOTORWAY|MTWY|MOUNT|MT|PARKS?|PARKWAYS?|PKWY|PASS|PLACE|PL|PLAZA|PLZ|POINTS?|PTS?|RIDGES?|RDGS?|ROADS?|RDS?|ROUTE|RTE?|SHOALS?|SHLS?|SHORES?|SHRS?|SPRINGS?|SPGS?|SPURS?|STREETS?|STS?|SUMMIT|SMT|TERRACE|TER|THROUGHWAY|TRWY|TRAFFICWAY|TRFY|TRAIL|TRL|TURNPIKE|TPKE|VALLEYS?|VLYS?|WAYS?)+(?:[\.\-\s\,]?)*((APARTMENT|APT|APPT|#|NUMBER|NUM|FLOOR|FL|\s)?(\d)*)\b/ig;
+
+  return regex.test(str);
+};
+is.street = is.address = is.streetAddress;
+
+/**
+ * Test if a string resembles a US Zip code,
+ * no regular expression will be perfect for this,
+ * as there are many numbers that aren't valid zip codes
+ * @param {String || Number} the string or number literal to test
+ * @return true if zipcode like, false otherwise
+ */
+is.zipCode = function(str) {
+  if (is.undefined(str) || !(is.string(str) || is.number(str)))
+    return false;
+
+  var zip = /^\d{5}(?:-\d{4})?$/;
+  return zip.test(str);
+};
+is.zip = is.zipCode;
+
+/**
+ * Test if a string contains a US phone number
+ * @param {String} the string to search
+ * @return true if str contains a phone number, false otherwise.
+ */
+ is.phoneNumber = function(str){
+   if (!is.string(str))
+    return false;
+   var nums = /(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:(\(?)(?:(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]‌​)\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\)?)\s*(?:[.-]\s*)?)?([2-9]1[02-‌​9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})/g;
+   return nums.test(str);
+ };
+ is.phone = is.phoneNumber;
