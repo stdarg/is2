@@ -79,7 +79,7 @@ Numeric Types within Number:
 * is.notANumber(val) - is.nan, is.notANum
 * is.odd(val)
 
-Numeric Type & State:
+Numeric Type and State:
 
 * is.positiveNumber(val) - is.pos, is.positive, is.posNum, is.positiveNum
 * is.negativeNumber(val) - is.neg,  is.negNum,  is.negativeNum,  is.negativeNumber
@@ -128,6 +128,12 @@ Credit Cards:
 * is.masterCardCardNumber - is.masterCardCard, is.masterCard
 * is.visaCardNumber(str) - is.visaCard, is.visa
 * is.visaElectronCardNumber(str) - is.visaElectronCard, is.visaElectron
+
+Personal information:
+
+* is.streetAddress(str) - is.street, is.address
+* is.zipCode(str) - is.zip
+* is.phoneNumber(str) - is.phone
 
 
 ## License
