@@ -1156,3 +1156,35 @@ is.visaElectronCardNumber = function(str) {
 };
 
 is.visaElectron = is.visaElectronCard = is.visaElectronCardNumber;
+
+/**
+ * Test if the input is a valid MongoDB id.
+ * @param {String|Object} Either a mongodb object id or a string representation.
+ * @return true if the string is the correct format, false otherwise
+ */
+var objectid = require('objectid');
+is.mongoId = is.objectId = is.objId = function(id) {
+    try {
+        return objectid.isValid(id);
+    } catch(err) {
+        return false;
+    }
+};
+
+/**
+ * Test is the first argument is structly equal to any of the subsequent args.
+ * @param Value to test against subsequent arguments.
+ * @return true if the first value matches any of subsequent values.
+ */
+is.matching = is.match = is.inArgs = function(val) {
+    if (arguments.length < 2)
+        return false;
+    var result = false;
+    for (var i=1; i<arguments.length; i++) {
+        var eq = is.equal(val, arguments[i]);
+        result = result || eq;
+    }
+    return result;
+};
+
+

@@ -1334,3 +1334,41 @@ describe('is.hostAddress', function() {
     });
 });
 
+describe('is.mongoId', function() {
+    it('should return true for valid mongo ids ', function() {
+        assert.equal(false, is.objectId());
+        assert.equal(false, is.objectId(111111111111111111111111));
+        assert.equal(false, is.objectId(null));
+        assert.equal(false, is.objectId(false));
+        assert.equal(false, is.objectId({}));
+        assert.equal(false, is.objectId({}));
+
+        var ObjectID = require('mongodb').ObjectID;
+        assert.equal(true, is.objectId('507f1f77bcf86cd799439011'));
+        assert.equal(true, is.objectId('507f191e810c19729de860ea'));
+        assert.equal(true, is.objectId(new ObjectID()));
+    });
+});
+
+describe('is.matching', function() {
+    it('should return true if the first arg matches any of the subsequent in '+
+       'strict comparison ', function() {
+        assert.equal(false, is.match());
+        assert.equal(false, is.match(111111111111111111111111));
+        assert.equal(false, is.match(null));
+        assert.equal(false, is.match(false));
+        assert.equal(false, is.match({}));
+
+        assert.equal(false, is.match({}, true));
+        assert.equal(true, is.match(111111111111111111111111, 111111111111111111111111));
+        assert.equal(true, is.match(null, null));
+        assert.equal(true, is.match(false, false));
+
+        var ObjectID = require('mongodb').ObjectID;
+        assert.equal(true, is.match(false, true, false));
+
+        assert.equal(true, is.match('507f191e810c19729de860ea', false, '507f191e810c19729de860ea'));
+        var objId = new ObjectID();
+        assert.equal(true, is.match(objId, objId));
+    });
+});

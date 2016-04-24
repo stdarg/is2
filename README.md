@@ -4,12 +4,6 @@ is2 is a type-checking module for JavaScript to test values. Is does not throw
 exceptions and every function only returns true or false. Use is2 to validate
 types in your node.js code. Every function in is2 returns either true of false.
 
-After finding Enrico Marino's module is, the concise syntax amazed, but there
-were syntax issues that made using is difficult. This fork of is fixes those
-issues Also, added tests via mocha which can be run using 'npm test'.
-
-The module is once-again cross-platform.
-
 ## Installation
 To install is2, type:
 
@@ -46,6 +40,7 @@ Types:
 * is.error(val) - is.err
 * is.false(val)
 * is.function(val) - is.funct, is.fun
+* is.mongoId - is.objectId, is.objId
 * is.null(val)
 * is.nullOrUndefined(val) - is.nullOrUndef
 * is.number(val) - is.num
@@ -60,6 +55,8 @@ Relationships:
 * is.equal(val, other) - is.eq, is.objEquals
 * is.hosted(val, host)
 * is.instanceOf(val, constructor) - is.instOf, is.instanceof
+* is.matching(val1, val2 [, val3, ...]) - is.match : true if the first arument
+  is strictly equal to any of the subsequent args.
 * is.objectInstanceof(obj, objType) - is.instOf, is.instanceOf, is.objInstOf, is.objectInstanceOf
 * is.type(val, type) - is.a
 
