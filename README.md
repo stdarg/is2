@@ -107,6 +107,7 @@ Networking:
 * is.hostAddress(val) - is.host = is.hostIp = is.hostAddr
 * is.port(val)
 * is.systemPort(val) - is.sysPort
+* is.url(val) - is.uri
 * is.userPort(val)
 
 Credit Cards:

@@ -238,7 +238,7 @@ is.true = function(value) {
 };
 
 /**
- * Test if 'value' is a uuid.
+ * Test if 'value' is a uuid (v1-v5)
  * @param {Any} value to test.
  * @return {Boolean} true if 'value is a valid RFC4122 UUID. Case non-specific.
  */
@@ -1236,3 +1236,15 @@ is.zip = is.zipCode;
    return nums.test(str);
  };
  is.phone = is.phoneNumber;
+
+/**
+ * Test is a string is a valid URL
+ * @param {string} val - the possible url to check
+ * @return true if str contains a phone number, false otherwise.
+ */
+var isUrl = require('is-url');
+is.url = function(val) {
+    return isUrl(val);
+};
+is.uri = is.url;
+

@@ -1432,3 +1432,22 @@ describe('is.phoneNumber', function(){
     assert.equal(true, is.phoneNumber('my number is 1 (123) 555 \n5767 and here\'s some more text'));
   });
 });
+
+describe('is.url', function(){
+  it('should return true for valid URLs', function(){
+    assert.equal(false, is.url());
+    assert.equal(false, is.url(23897498729387));
+    assert.equal(false, is.url('something with a 213219 number in it'));
+    assert.equal(false, is.url(null));
+    assert.equal(false, is.url(false));
+    assert.equal(false, is.url({}));
+    assert.equal(false, is.url({url:1}));
+
+    assert.equal(true, is.url('http://www.amazon.com'));
+    assert.equal(true, is.url('http://www.amazon.com/'));
+    assert.equal(true, is.url('http://www.amazon.com/help'));
+    assert.equal(true, is.url('http://www.amazon.com/help?page1&num=383833'));
+    assert.equal(true, is.url('http://amazon.com'));
+    assert.equal(false, is.url('http://amazon'));
+  });
+});
