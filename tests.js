@@ -1451,3 +1451,24 @@ describe('is.url', function(){
     assert.equal(false, is.url('http://amazon'));
   });
 });
+
+describe('is.enum', function(){
+  it('should return true for if the array contains the value', function(){
+    assert.equal(false, is.enum());
+    assert.equal(false, is.enum('a'));
+    assert.equal(false, is.enum('a', 12));
+    assert.equal(false, is.enum('a', {a: 'a'}));
+    assert.equal(false, is.enum('a', true));
+    assert.equal(false, is.enum('a', ['b', 'c']));
+    assert.equal(false, is.enum('a', ['b', 'c']));
+    assert.equal(false, is.enum('a', ['b', 'c', 4, {a: 'a'}]));
+
+    assert.equal(true, is.enum('a', ['a', 'b', 'c']));
+    assert.equal(true, is.enum(1, ['a', 'b', 'c', 1]));
+    assert.equal(true, is.enum(true, ['a', 'b', 'c', true]));
+    assert.equal(true, is.enum(null, ['a', 'b', 'c', null]));
+    assert.equal(true, is.enum(false, ['a', 'b', 'c', false]));
+    assert.equal(true, is.enum([1], ['a', 'b', 'c', [1]]));
+    assert.equal(true, is.enum({a: 'a'}, ['a', 'b', 'c', {a: 'a'}]));
+  });
+});

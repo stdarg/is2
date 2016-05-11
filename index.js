@@ -1248,3 +1248,18 @@ is.url = function(val) {
 };
 is.uri = is.url;
 
+is.enumerator = function(val, ary){
+  var value = false;
+
+  if (!is.defined(val) || !is.defined(ary) || !is.arrayLike(ary))
+    return value;
+
+  for (var i = 0, len = ary.length; i < len; i++) {
+    if (is.equal(val, ary[i])) {
+      value = true;
+      break;
+    }
+  }
+  return value;
+};
+is.enum = is.inArray = is.enumerator;
