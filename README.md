@@ -69,6 +69,7 @@ Object State:
 * is.emptyString(val) - is.emptyStr
 * is.nonEmptyArray(val) - is.nonEmptyArry, is.nonEmptyAry
 * is.nonEmptyObject(val) - is.nonEmptyObj
+* is.emptyObject(val) - is.emptyObj
 * is.nonEmptyString(val) - is.nonEmptyStr
 
 Numeric Types within Number:

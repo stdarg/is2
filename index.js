@@ -441,6 +441,17 @@ is.nonEmptyObject = function(value) {
 is.nonEmptyObj = is.nonEmptyObject;
 
 /**
+ * Test if 'value' is an object with no properties. Note: Arrays are objects.
+ * Alias: nonEmptyObj
+ * @param {Any} value to test.
+ * @return {Boolean} true if 'value' is an object, false otherwise.
+ */
+is.emptyObject = function(value) {
+    return '[object Object]' === toString.call(value) && Object.keys(value).length === 0;
+};
+is.emptyObj = is.emptyObject;
+
+/**
  * Test if 'value' is a non-empty string.
  * Alias: nonEmptyStr
  * @param {Any} value to test.
