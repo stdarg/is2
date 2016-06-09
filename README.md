@@ -59,6 +59,7 @@ Relationships:
   is strictly equal to any of the subsequent args.
 * is.objectInstanceof(obj, objType) - is.instOf, is.instanceOf, is.objInstOf, is.objectInstanceOf
 * is.type(val, type) - is.a
+* is.enumerator(val, array) - is.enum, is.inArray
 
 Object State:
 
