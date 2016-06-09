@@ -689,6 +689,22 @@ is.within = function(value, start, finish) {
 };
 is.withIn = is.within;
 
+/**
+ * Test if 'value' is within 'precision' decimal places from 'comparitor'.
+ * Alias: closish, near.
+ * @param {Number} value value to test
+ * @param {Number} comparitor value to test 'value' against
+ * @param {Number} precision number of decimals to compare floating points, defaults to 2
+ * @return {Boolean} true if 'value' is within 'precision' decimal places from 'comparitor', false otherwise.
+ */
+is.prettyClose = function(value, comparitor, precision) {
+  if (!is.number(value) || !is.number(comparitor)) return false;
+  if (is.defined(precision) && !is.posInt(precision)) return false;
+  if (is.undefined(precision)) precision = 2;
+
+  return value.toFixed(precision) === comparitor.toFixed(precision);
+};
+is.closish = is.near = is.prettyClose;
 ////////////////////////////////////////////////////////////////////////////////
 // Networking
 

@@ -1472,3 +1472,22 @@ describe('is.enum', function(){
     assert.equal(true, is.enum({a: 'a'}, ['a', 'b', 'c', {a: 'a'}]));
   });
 });
+
+describe('is.prettyClose', function(){
+  it('should return true for floating point numbers that are close', function(){
+    assert.equal(false, is.prettyClose());
+    assert.equal(false, is.prettyClose(1, 'a'));
+    assert.equal(false, is.prettyClose('b', 'c'));
+    assert.equal(false, is.prettyClose(9, null));
+    assert.equal(false, is.prettyClose(1, 3, -9));
+    assert.equal(false, is.prettyClose(1.1, 1.16, 1));
+    assert.equal(false, is.prettyClose(23.678, 23.98746, 4));
+
+    assert.equal(true, is.prettyClose(1.1, 1.12, 1));
+    assert.equal(true, is.prettyClose(100.4, 100.439999, 1));
+    assert.equal(true, is.prettyClose(0.39, 0.414, 1));
+    assert.equal(true, is.prettyClose(0.00000009, 0.0000001, 7));
+    assert.equal(true, is.prettyClose(1.123, 1.121));
+    assert.equal(true, is.prettyClose(1, 1, 1));
+  });
+});

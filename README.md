@@ -98,6 +98,7 @@ Numeric Relationship:
 * is.maximum(val, array) - is.max
 * is.minimum(val, array) - is.min
 * is.withIn(val, start, finish) - is.within
+* is.prettyClose(val, comp, precision) - is.closish, is.near
 
 Networking:
 
