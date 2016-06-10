@@ -1188,14 +1188,12 @@ is.visaElectron = is.visaElectronCard = is.visaElectronCardNumber;
  * Test if the input is a valid MongoDB id.
  * @param {String|Object} Either a mongodb object id or a string representation.
  * @return true if the string is the correct format, false otherwise
+ * Thanks to Jason Denizac (https://github.com/jden) for pointing this out.
+ * https://github.com/jden/objectid/blob/master/index.js#L7-L10
  */
-var objectid = require('objectid');
+var objIdPattern = /^[0-9a-fA-F]{24}$/;
 is.mongoId = is.objectId = is.objId = function(id) {
-    try {
-        return objectid.isValid(id);
-    } catch(err) {
-        return false;
-    }
+  return (Boolean(id) && !Array.isArray(id) && objIdPattern.test(String(id)));
 };
 
 /**
