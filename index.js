@@ -436,7 +436,7 @@ is.nonEmptyArr = is.nonEmptyArry = is.nonEmptyAry = is.nonEmptyArray;
  * @return {Boolean} true if 'value' is an object, false otherwise.
  */
 is.nonEmptyObject = function(value) {
-    return '[object Object]' === toString.call(value) && Object.keys(value).length;
+    return '[object Object]' === toString.call(value) && Object.keys(value).length > 0;
 };
 is.nonEmptyObj = is.nonEmptyObject;
 
