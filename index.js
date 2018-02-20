@@ -154,16 +154,37 @@ is.false = function(value) {
 };
 
 /**
- * Test if 'value' is a function.
+ * Test if 'value' is a function or async function.
  * Alias: func
  * @param {Any} value value to test.
  * @return {Boolean} true if 'value' is a function, false otherwise.
  */
 is.function = function(value) {
-    return '[object Function]' === toString.call(value);
+    return is.syncFunction(value) || is.asyncFunction(value)
 };
 is.fun = is.func = is.function;
 
+/**
+ * Test if 'value' is an async function using `async () => {}` or `async function () {}`.
+ * Alias: func
+ * @param {Any} value value to test.
+ * @return {Boolean} true if 'value' is a function, false otherwise.
+ */
+is.asyncFunction = function(value) {
+  return '[object AsyncFunction]' === toString.call(value);
+}
+is.asyncFun = is.asyncFunc = is.asyncFunction;
+
+/**
+ * Test if 'value' is a synchronous function.
+ * Alias: syncFunc
+ * @param {Any} value value to test.
+ * @return {Boolean} true if 'value' is a function, false otherwise.
+ */
+is.syncFunction = function (value) {
+  return '[object Function]' === toString.call(value);
+}
+is.syncFun = is.syncFunc = is.syncFunction
 /**
  * Test if 'value' is null.
  * @param {Any} value to test.

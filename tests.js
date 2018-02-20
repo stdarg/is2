@@ -195,10 +195,89 @@ describe('is.function', function() {
         assert.equal(false, is.function(new Date()));
 
         var f = function() { var a = 1; a++; };
+        var fa = () => { let a = 1; a++; };
+        var a = async () => Promise.resolve(true);
+        var af = async function() { await Promise.resolve(true); };
         assert.equal(true, is.function(f));
         assert.equal(true, is.fun(f));
         assert.equal(true, is.func(f));
+        assert.equal(true, is.function(fa));
+        assert.equal(true, is.fun(fa));
+        assert.equal(true, is.func(fa));
+        assert.equal(true, is.function(a));
+        assert.equal(true, is.fun(a));
+        assert.equal(true, is.func(a));
+        assert.equal(true, is.function(af));
+        assert.equal(true, is.fun(af));
+        assert.equal(true, is.func(af));
     });
+});
+
+describe('is.syncFunction', function() {
+  it('should return true if the value is a synchronous function', () => {
+    var a = async () => Promise.resolve(true);
+    var af = async function() { await Promise.resolve(true); };
+    assert.equal(false, is.syncFunction(a));
+    assert.equal(false, is.syncFunction(af));
+    assert.equal(false, is.syncFunction());
+    assert.equal(false, is.syncFunction('a'));
+    assert.equal(false, is.syncFunction(1));
+    assert.equal(false, is.syncFunction(true));
+    assert.equal(false, is.syncFunction(null));
+    assert.equal(false, is.syncFunction(false));
+    assert.equal(false, is.syncFunction({}));
+    assert.equal(false, is.syncFunction({a:1}));
+    assert.equal(false, is.syncFunction({a:1,b:2}));
+    assert.equal(false, is.syncFunction([]));
+    assert.equal(false, is.syncFunction([1]));
+    assert.equal(false, is.syncFunction([1,2]));
+    assert.equal(false, is.syncFunction(new Error()));
+    assert.equal(false, is.syncFunction(new Date()));
+
+    var f = function() { var a = 1; a++; };
+    var fa = () => { let a = 1; a++; };
+
+    assert.equal(true, is.syncFunction(f));
+    assert.equal(true, is.syncFunc(f));
+    assert.equal(true, is.syncFun(f));
+    assert.equal(true, is.syncFunction(fa));
+    assert.equal(true, is.syncFunc(fa));
+    assert.equal(true, is.syncFun(fa));
+
+  });
+});
+describe('is.asyncFunction', function() {
+  it('should return true if the value is an asynchronous function', () => {
+    var f = function() { var a = 1; a++; };
+    var fa = () => { let a = 1; a++; };
+    assert.equal(false, is.asyncFunction(f));
+    assert.equal(false, is.asyncFunction(fa));
+    assert.equal(false, is.asyncFunction());
+    assert.equal(false, is.asyncFunction('a'));
+    assert.equal(false, is.asyncFunction(1));
+    assert.equal(false, is.asyncFunction(true));
+    assert.equal(false, is.asyncFunction(null));
+    assert.equal(false, is.asyncFunction(false));
+    assert.equal(false, is.asyncFunction({}));
+    assert.equal(false, is.asyncFunction({a:1}));
+    assert.equal(false, is.asyncFunction({a:1,b:2}));
+    assert.equal(false, is.asyncFunction([]));
+    assert.equal(false, is.asyncFunction([1]));
+    assert.equal(false, is.asyncFunction([1,2]));
+    assert.equal(false, is.asyncFunction(new Error()));
+    assert.equal(false, is.asyncFunction(new Date()));
+
+    var a = async () => Promise.resolve(true);
+    var af = async function() { await Promise.resolve(true); };
+
+
+    assert.equal(true, is.asyncFunction(a));
+    assert.equal(true, is.asyncFunc(a));
+    assert.equal(true, is.asyncFun(a));
+    assert.equal(true, is.asyncFunction(af));
+    assert.equal(true, is.asyncFunc(af));
+    assert.equal(true, is.asyncFun(af));
+  });
 });
 
 describe('is.null', function() {
