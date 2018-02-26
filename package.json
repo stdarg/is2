@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "deep-is": "^0.1.3",
+    "ip-regex": "^2.1.0",
     "is-url": "^1.2.2"
   },
   "devDependencies": {

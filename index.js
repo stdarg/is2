@@ -9,14 +9,13 @@
  * Copyright(c) 2011 Enrico Marino <enrico.marino@email.com>
  * MIT license
  */
-
 'use strict';
-var owns = {}.hasOwnProperty;
-var toString = {}.toString;
-var is = exports;
-var deepIs = require('deep-is');
-
-is.version = '0.0.12';
+const owns = {}.hasOwnProperty;
+const toString = {}.toString;
+const is = exports;
+const deepIs = require('deep-is');
+const ipRegEx =  require('ip-regex');
+is.version = require('./package.json').version;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Environment
@@ -538,6 +537,7 @@ is.nan = is.notANum = is.notANumber;
 is.odd = function(value) {
     return !is.decimal(value) && '[object Number]' === toString.call(value) && value % 2 !== 0;
 };
+is.oddNumber = is.oddNum = is.odd;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Numeric Type & State
@@ -802,10 +802,9 @@ is.ipv4 = is.ipv4Addr = is.ipv4Address;
  */
 is.ipv6Address = function(value) {
     if (!is.nonEmptyStr(value))  return false;
-    return ipv6RegExp.test(value);
+    return ipRegEx.v6({extract: true}).test(value);
 };
 is.ipv6 = is.ipv6Addr = is.ipv6Address;
-var ipv6RegExp = /^((?=.*::)(?!.*::.+::)(::)?([\dA-F]{1,4}:(:|\b)|){5}|([\dA-F]{1,4}:){6})((([\dA-F]{1,4}((?!\3)::|:\b|$))|(?!\2\3)){2}|(((2[0-4]|1\d|[1-9])?\d|25[0-5])\.?\b){4})$/;
 
 /**
  * Test if a value is either an IPv4 or IPv6 numeric IP address.
@@ -814,7 +813,7 @@ var ipv6RegExp = /^((?=.*::)(?!.*::.+::)(::)?([\dA-F]{1,4}:(:|\b)|){5}|([\dA-F]{
  */
 is.ipAddress = function(value) {
     if (!is.nonEmptyStr(value)) return false;
-    return is.ipv4(value) || is.ipv6(value);
+    return is.ipv4Address(value) || is.ipv6Address(value)
 };
 is.ip = is.ipAddr = is.ipAddress;
 
