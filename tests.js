@@ -966,6 +966,7 @@ describe('is.ipv6Address', function() {
         // assert.equal(false, is.ipv6('2001:0000:1234:0000:0000:C1C0:ABCD:0876 0'));
         // assert.equal(false, is.ipv6('02001:0000:1234:0000:0000:C1C0:ABCD:0876'));
 
+        assert.equal(true, is.ipv6('2600:1700:f1b0:92a0:152a:c1b0:f3a3:f9a0'));
         assert.equal(true, is.ipv6('2001:db8:3333:4444:5555:6666:1.2.3.4'));
         assert.equal(true, is.ipv6('2001:0000:1234:0000:0000:C1C0:ABCD:0876'));
         assert.equal(true, is.ipv6('2001:0:1234::C1C0:ABCD:876'));
