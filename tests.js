@@ -1442,10 +1442,11 @@ describe('is.matching', function() {
         assert.equal(true, is.match(null, null));
         assert.equal(true, is.match(false, false));
 
-        var ObjectID = require('mongodb').ObjectID;
         assert.equal(true, is.match(false, true, false));
 
         assert.equal(true, is.match('507f191e810c19729de860ea', false, '507f191e810c19729de860ea'));
+
+        var ObjectID = require('mongodb').ObjectID;
         var objId = new ObjectID();
         assert.equal(true, is.match(objId, objId));
     });
