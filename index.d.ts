@@ -1,4 +1,4 @@
-export const version: unknown;
+export const version: string;
 /**
  * Tests if is is running under a browser.
  * @return {boolean} true if the environment has process, process.version and process.versions.
